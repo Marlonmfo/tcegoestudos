@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TCE-GO TI">
+<meta name="theme-color" content="#080c14">
+<title>TCE-GO TI 2027</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+:root{--bg:#080c14;--sf:#0f1520;--sf2:#161e2e;--border:#243048;--accent:#3d7eff;--accent2:#00e5a0;--warn:#f0a500;--danger:#e84545;--text:#dce8f5;--muted:#7a93b5;--dim:#3d5070;--r:14px;--rs:9px;--rx:6px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom);}
+header{background:var(--sf);border-bottom:1px solid var(--border);padding:calc(16px + env(safe-area-inset-top)) 18px 12px;position:sticky;top:0;z-index:200;}
+.hdt{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.badge{background:linear-gradient(135deg,#1a4fd6,#3d7eff);color:#fff;font-weight:700;font-size:11px;padding:4px 10px;border-radius:var(--rx);letter-spacing:.5px;}
+.ltitle{font-size:15px;font-weight:600;margin-left:10px;}
+.lsub{font-size:11px;color:var(--muted);margin-left:10px;}
+.epill{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:7px 12px;text-align:center;}
+.edays{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:500;color:var(--accent);line-height:1;}
+.elabel{font-size:10px;color:var(--muted);}
+.prow{display:flex;align-items:center;gap:10px;}
+.pbar{flex:1;height:5px;background:var(--border);border-radius:99px;overflow:hidden;}
+.pfill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;transition:width .4s;}
+.ppct{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent2);min-width:36px;text-align:right;}
+nav{background:var(--sf);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:none;padding:0 8px;}
+nav::-webkit-scrollbar{display:none;}
+.nb{background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-size:13px;font-weight:500;padding:11px 12px;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:'Inter',sans-serif;}
+.nb:hover{color:var(--text);}
+.nb.active{color:var(--accent);border-bottom-color:var(--accent);}
+main{max-width:860px;margin:0 auto;padding:16px 14px 80px;}
+.tab{display:none;}.tab.active{display:block;}
+.card{background:var(--sf);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:12px;}
+.ctitle{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.mentor{background:linear-gradient(135deg,#0d1e3a,#0f2040);border:1px solid #1e3a6a;border-radius:var(--r);padding:16px;margin-bottom:12px;}
+.mhdr{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.mav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a4fd6,#00e5a0);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.mname{font-size:13px;font-weight:600;color:#fff;}
+.mrole{font-size:11px;color:#5a8ab5;}
+.mmsg{font-size:13px;color:#a0c4e8;line-height:1.7;}
+.mmsg strong{color:#fff;}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;}
+.sbox{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:11px;text-align:center;}
+.sval{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:500;color:var(--accent);line-height:1.1;}
+.slbl{font-size:10px;color:var(--muted);margin-top:3px;}
+.ncard{background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.2);border-radius:var(--rs);padding:13px 15px;margin-bottom:12px;}
+.ntag{font-size:10px;font-weight:700;color:var(--accent2);letter-spacing:.8px;margin-bottom:5px;}
+.ntitle{font-size:14px;font-weight:600;margin-bottom:3px;}
+.ndesc{font-size:12px;color:var(--muted);}
+.btn{background:var(--accent);color:#fff;border:none;border-radius:var(--rs);padding:10px 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .15s;text-decoration:none;display:inline-block;}
+.btn:hover{opacity:.85;}
+.btn-sm{padding:7px 12px;font-size:12px;}
+.btn-g{background:#0a8a5c;}
+.btn-s{background:#1DB954;color:#000;}
+.btn-b{background:#0284c7;}
+.btn-v{background:#7c3aed;}
+.btn-gh{background:transparent;border:1px solid var(--border);color:var(--muted);}
+.btn-gh:hover{border-color:var(--accent);color:var(--accent);opacity:1;}
+.brow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+/* CRONOGRAMA */
+.cnav{display:flex;gap:4px;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:4px;margin-bottom:14px;}
+.cbtn{flex:1;background:none;border:none;border-radius:6px;color:var(--muted);font-size:13px;font-weight:500;padding:9px 6px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
+.cbtn.active{background:var(--accent);color:#fff;}
+.cview{display:none;}.cview.active{display:block;}
+.hhero{background:linear-gradient(135deg,#0d1e3a,#0f1a30);border:1px solid #1e3a6a;border-radius:var(--r);padding:16px;margin-bottom:12px;}
+.hdata{font-size:11px;color:#5a8ab5;font-weight:600;letter-spacing:.5px;margin-bottom:4px;}
+.htitle{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;}
+.htema{font-size:13px;color:#8ab0d8;}
+.mcard{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:8px;overflow:hidden;}
+.mhd{display:flex;align-items:center;gap:10px;padding:12px 14px;}
+.mic{font-size:18px;flex-shrink:0;}
+.minf{flex:1;}
+.mtit{font-size:13px;font-weight:600;}
+.msub{font-size:12px;color:var(--muted);margin-top:1px;}
+.mtime{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);background:rgba(61,127,255,.12);padding:3px 8px;border-radius:4px;flex-shrink:0;}
+.mbody{border-top:1px solid var(--border);padding:12px 14px;display:flex;flex-direction:column;gap:8px;}
+.arow{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);}
+.arow:last-child{border-bottom:none;}
+.arow::before{content:'→';color:var(--accent);flex-shrink:0;margin-top:1px;}
+.ainf{flex:1;}
+.atit{font-size:12px;font-weight:500;}
+.adisc{font-size:11px;color:var(--muted);}
+.lp{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:4px;text-decoration:none;margin-top:4px;flex-shrink:0;}
+.lp-ti{background:rgba(61,127,255,.18);color:#60a5fa;}
+.lp-g{background:rgba(10,138,92,.18);color:#34d399;}
+.lp-s{background:rgba(29,185,84,.18);color:#1DB954;}
+.lp-q{background:rgba(2,132,199,.18);color:#38bdf8;}
+/* SEMANA */
+.sdia{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:7px;overflow:hidden;}
+.sdia.today{border-color:var(--accent);}
+.sdhdr{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;}
+.sdnome{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--muted);min-width:80px;}
+.sdia.today .sdnome{color:var(--accent);}
+.sdtit{font-size:13px;font-weight:500;flex:1;}
+.sdhoje{background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;}
+.sdchev{color:var(--dim);font-size:14px;transition:transform .2s;}
+.sdhdr.open .sdchev{transform:rotate(90deg);}
+.sdbody{display:none;border-top:1px solid var(--border);padding:12px 14px;}
+.sdbody.open{display:block;}
+.sdrow{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.sdrow:last-child{border-bottom:none;}
+.sdicon{font-size:15px;flex-shrink:0;}
+.sdinf{flex:1;}
+.sdtitle{font-size:12px;font-weight:500;}
+.sdlinks{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
+/* MES */
+.mbloco{border-left:3px solid var(--accent);padding-left:14px;margin-bottom:20px;}
+.mmlabel{font-size:11px;font-weight:700;letter-spacing:.6px;margin-bottom:4px;}
+.msem{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rx);padding:10px 12px;margin-bottom:7px;}
+.mslabel{font-size:11px;font-weight:700;color:var(--accent2);margin-bottom:4px;}
+.mstemas{font-size:12px;color:var(--muted);line-height:1.6;}
+.msmeta{font-size:11px;color:var(--accent2);margin-top:4px;}
+.mslinks{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;}
+/* PLANO */
+.fhdr{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;user-select:none;}
+.fdot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.fnome{font-size:14px;font-weight:600;flex:1;}
+.fchev{color:var(--dim);font-size:16px;transition:transform .2s;}
+.fhdr.open .fchev{transform:rotate(90deg);}
+.fbody{display:none;padding:0 14px 14px;}
+.fbody.open{display:block;}
+.wblock{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:7px;overflow:hidden;}
+.whdr{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;}
+.wlbl{font-size:11px;font-weight:700;color:var(--accent);background:rgba(61,127,255,.12);padding:2px 7px;border-radius:4px;flex-shrink:0;}
+.wtit{font-size:13px;font-weight:500;flex:1;}
+.wprog{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+.wchev{color:var(--dim);font-size:14px;transition:transform .2s;}
+.whdr.open .wchev{transform:rotate(90deg);}
+.wbody{display:none;border-top:1px solid var(--border);}
+.wbody.open{display:block;}
+.titem{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;user-select:none;}
+.titem:last-child{border-bottom:none;}
+.titem:hover{background:rgba(255,255,255,.02);}
+.titem.done{opacity:.55;}
+.tchk{width:19px;height:19px;border:2px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:10px;transition:all .15s;}
+.titem.done .tchk{background:var(--accent2);border-color:var(--accent2);color:#080c14;}
+.tcont{flex:1;}
+.ttit{font-size:13px;font-weight:500;}
+.titem.done .ttit{text-decoration:line-through;color:var(--muted);}
+.tdet{font-size:12px;color:var(--muted);margin-top:2px;}
+.tbadges{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap;}
+.b{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;}
+.bt{background:rgba(61,127,255,.15);color:#6fa3ff;}
+.bq{background:rgba(0,229,160,.12);color:#00e5a0;}
+.br{background:rgba(240,165,0,.12);color:#f0a500;}
+.bs{background:rgba(232,69,69,.12);color:#e84545;}
+.bd{background:rgba(160,80,255,.15);color:#b57fff;}
+.bp{background:rgba(232,69,69,.2);color:#f87171;border:1px solid rgba(232,69,69,.3);}
+.tip{background:rgba(61,127,255,.06);border-left:3px solid var(--accent);border-radius:0 var(--rx) var(--rx) 0;padding:10px 13px;margin:10px 14px;font-size:12px;color:#8ab0d8;line-height:1.6;}
+.tip strong{color:var(--text);}
+/* TOPICOS */
+.tgroup{margin-bottom:18px;}
+.tghdr{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.tgdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.tgname{font-size:13px;font-weight:600;}
+.tgbar{flex:1;background:var(--border);border-radius:99px;height:4px;overflow:hidden;}
+.tgfill{height:100%;border-radius:99px;transition:width .3s;}
+.tgcount{font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+.topi{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--rx);margin-bottom:5px;background:var(--sf2);border:1px solid var(--border);cursor:pointer;transition:border-color .15s;user-select:none;}
+.topi:hover{border-color:var(--accent);}
+.topi.done{opacity:.55;}
+.topchk{width:17px;height:17px;border:2px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;transition:all .15s;}
+.topi.done .topchk{background:var(--accent2);border-color:var(--accent2);color:#080c14;}
+.topname{font-size:13px;flex:1;}
+.topi.done .topname{text-decoration:line-through;color:var(--muted);}
+.topfit{font-size:11px;color:var(--muted);}
+.wb{font-size:10px;font-weight:700;padding:2px 5px;border-radius:3px;}
+.wbh{background:rgba(232,69,69,.15);color:#f87171;}
+.wbm{background:rgba(240,165,0,.12);color:#fbbf24;}
+.wbl{background:rgba(61,127,255,.12);color:#60a5fa;}
+/* SIMULADO */
+.qq{font-size:14px;font-weight:500;line-height:1.65;margin-bottom:16px;}
+.qopts{display:flex;flex-direction:column;gap:7px;}
+.qopt{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;cursor:pointer;font-size:13px;text-align:left;color:var(--text);font-family:'Inter',sans-serif;transition:all .15s;}
+.qopt:hover:not(:disabled){border-color:var(--accent);}
+.qopt.correct{background:rgba(0,229,160,.1);border-color:var(--accent2);color:var(--accent2);}
+.qopt.wrong{background:rgba(232,69,69,.1);border-color:var(--danger);color:#f87171;}
+.qopt:disabled{cursor:default;}
+.qfb{margin-top:13px;padding:11px 14px;border-radius:var(--rs);font-size:13px;display:none;line-height:1.6;}
+.qfb.show{display:block;}
+.qfb.ok{background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.25);color:var(--accent2);}
+.qfb.err{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.25);color:#f87171;}
+.sbar{display:flex;align-items:center;gap:12px;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;margin-bottom:12px;}
+.snum{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:500;color:var(--accent2);line-height:1;}
+.spin{width:26px;height:26px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite;margin:0 auto 10px;}
+@keyframes sp{to{transform:rotate(360deg);}}
+.qload{text-align:center;padding:34px;color:var(--muted);font-size:13px;}
+/* APIKEY */
+.apibox{background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2);border-radius:var(--rs);padding:12px 14px;margin-bottom:12px;}
+.apitit{font-size:12px;font-weight:700;color:var(--warn);margin-bottom:6px;}
+.apidesc{font-size:12px;color:var(--muted);margin-bottom:8px;}
+.apirow{display:flex;gap:8px;align-items:center;}
+.apiinput{flex:1;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);color:var(--text);padding:8px 11px;font-size:12px;font-family:'JetBrains Mono',monospace;outline:none;}
+/* GRAN */
+.gday{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:7px;overflow:hidden;}
+.gdhdr{display:flex;align-items:center;gap:10px;padding:11px 14px;cursor:pointer;}
+.gdate{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--accent);min-width:90px;}
+.gdtit{font-size:13px;font-weight:500;flex:1;}
+.gdcnt{font-size:11px;color:var(--muted);}
+.gdchev{color:var(--dim);font-size:14px;transition:transform .2s;}
+.gdhdr.open .gdchev{transform:rotate(90deg);}
+.gdbody{display:none;border-top:1px solid var(--border);}
+.gdbody.open{display:block;}
+.gaula{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);}
+.gaula:last-child{border-bottom:none;}
+.gaula:hover{background:rgba(255,255,255,.02);}
+.gaula.done{opacity:.55;}
+.gachk{width:17px;height:17px;border:2px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:9px;cursor:pointer;transition:all .15s;}
+.gaula.done .gachk{background:var(--accent2);border-color:var(--accent2);color:#080c14;}
+.gainf{flex:1;cursor:pointer;}
+.gatit{font-size:13px;}
+.gaula.done .gatit{text-decoration:line-through;color:var(--muted);}
+.gadisc{font-size:11px;color:var(--muted);margin-top:1px;}
+.galink{background:rgba(29,185,84,.12);color:#1DB954;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;text-decoration:none;flex-shrink:0;border:1px solid rgba(29,185,84,.2);}
+.galink.ti{background:rgba(61,127,255,.15);color:#60a5fa;border-color:rgba(61,127,255,.2);}
+.gmhdr{font-size:11px;font-weight:700;color:var(--warn);text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px;display:flex;align-items:center;gap:8px;}
+.gmhdr::after{content:'';flex:1;height:1px;background:var(--border);}
+.gpbar{flex:1;background:var(--border);border-radius:99px;height:4px;overflow:hidden;}
+.gpfill{height:100%;background:var(--accent);border-radius:99px;transition:width .3s;}
+/* PDFs */
+.pitem{display:flex;align-items:center;gap:10px;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;margin-bottom:7px;text-decoration:none;transition:border-color .15s;}
+.pitem:hover{border-color:var(--accent);}
+.picon{font-size:20px;flex-shrink:0;}
+.pinf{flex:1;}
+.ptit{font-size:13px;font-weight:600;color:var(--text);}
+.psub{font-size:11px;color:var(--muted);}
+.pbadge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;}
+/* PODCASTS */
+.pgtit{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px;display:flex;align-items:center;gap:8px;}
+.pgtit::after{content:'';flex:1;height:1px;background:var(--border);}
+.pcard{display:flex;align-items:flex-start;gap:12px;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;margin-bottom:7px;text-decoration:none;transition:border-color .15s;}
+.pcard:hover{border-color:#1DB954;}
+.pcicon{width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,#1DB954,#158a3e);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.pcinf{flex:1;}
+.pcname{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.pcdesc{font-size:12px;color:var(--muted);line-height:1.5;}
+.pctags{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
+.pctag{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:rgba(29,185,84,.12);color:#1DB954;}
+.spbadge{display:inline-flex;align-items:center;gap:4px;background:#1DB954;color:#000;font-size:10px;font-weight:700;padding:4px 10px;border-radius:99px;text-decoration:none;flex-shrink:0;margin-top:2px;}
+/* CARRO */
+.ccard{background:linear-gradient(135deg,#0d1e0d,#0a1a0a);border:1px solid #1a3a1a;border-radius:var(--r);padding:16px;margin-bottom:12px;}
+.citem{display:flex;align-items:center;gap:12px;background:rgba(29,185,84,.08);border:1px solid rgba(29,185,84,.2);border-radius:10px;padding:12px 14px;text-decoration:none;margin-bottom:7px;}
+.cnum{width:42px;height:42px;border-radius:8px;background:linear-gradient(135deg,#1DB954,#0a8a3a);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.cinf{flex:1;}
+.ctit{font-size:13px;font-weight:700;color:#fff;}
+.cdesc{font-size:11px;color:#5a9a5a;margin-top:2px;}
+.cwhen{font-size:10px;color:#1DB954;margin-top:3px;}
+.cbtn2{background:#1DB954;color:#000;font-size:10px;font-weight:700;padding:5px 12px;border-radius:99px;text-decoration:none;flex-shrink:0;}
+.cslbl{font-size:10px;font-weight:700;color:#1DB954;letter-spacing:.8px;margin-bottom:8px;}
+/* NOTAS */
+.narea{width:100%;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:12px;resize:vertical;min-height:110px;outline:none;transition:border-color .15s;}
+.narea:focus{border-color:var(--accent);}
+.si{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);color:var(--text);padding:8px 11px;font-size:13px;font-family:'Inter',sans-serif;outline:none;}
+select{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);color:var(--text);font-size:13px;padding:9px 12px;font-family:'Inter',sans-serif;outline:none;cursor:pointer;width:100%;margin-bottom:10px;}
+.inrow{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.inrow:last-child{border-bottom:none;}
+.inicon{font-size:17px;flex-shrink:0;width:24px;text-align:center;}
+.inkey{font-size:11px;color:var(--muted);margin-bottom:2px;}
+.inval{font-size:13px;font-weight:500;}
+.chip{display:inline-block;background:rgba(61,127,255,.14);color:var(--accent);font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;margin-right:4px;margin-top:2px;}
+hr.sep{border:none;border-top:1px solid var(--border);margin:14px 0;}
+
+/* DISCURSIVA */
+.disc-tema{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:8px;overflow:hidden;}
+.disc-tema-hdr{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;}
+.disc-tema-hdr.open .disc-tema-chev{transform:rotate(90deg);}
+.disc-tema-icon{font-size:20px;flex-shrink:0;}
+.disc-tema-info{flex:1;}
+.disc-tema-title{font-size:13px;font-weight:600;}
+.disc-tema-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.disc-tema-prob{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;}
+.disc-tema-chev{color:var(--dim);font-size:14px;transition:transform .2s;}
+.disc-tema-body{display:none;border-top:1px solid var(--border);padding:14px;}
+.disc-tema-body.open{display:block;}
+.disc-norma-row{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.disc-norma-row:last-child{border-bottom:none;}
+.disc-norma-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(61,127,255,.15);color:#60a5fa;flex-shrink:0;min-width:110px;text-align:center;}
+.disc-norma-desc{font-size:12px;color:var(--muted);flex:1;line-height:1.5;}
+.disc-frase{background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.15);border-radius:var(--rx);padding:12px 14px;margin-top:10px;font-size:12px;color:#8ab0d8;line-height:1.8;font-style:italic;}
+.disc-frase strong{color:#fff;font-style:normal;}
+.disc-kit-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
+.disc-kit-row:last-child{border-bottom:none;}
+.disc-kit-norma{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--accent);min-width:130px;flex-shrink:0;}
+.disc-kit-desc{font-size:12px;color:var(--muted);flex:1;line-height:1.5;}
+.disc-estrutura-step{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
+.disc-estrutura-step:last-child{border-bottom:none;}
+.disc-estrutura-num{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.disc-estrutura-info{flex:1;}
+.disc-estrutura-title{font-size:13px;font-weight:600;}
+.disc-estrutura-desc{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5;}
+
+
+/* ESTRATEGIA */
+.est-nivel{border-radius:var(--rs);margin-bottom:10px;overflow:hidden;}
+.est-nivel-hdr{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;}
+.est-nivel-hdr.open + .est-nivel-body{display:block;}
+.est-nivel-body{display:none;padding:0 14px 14px;}
+.est-nivel-chev{color:var(--dim);font-size:14px;transition:transform .2s;margin-left:auto;}
+.est-nivel-hdr.open .est-nivel-chev{transform:rotate(90deg);}
+.est-materia{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:8px;overflow:hidden;}
+.est-materia-hdr{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;}
+.est-materia-hdr.open .est-mat-chev{transform:rotate(90deg);}
+.est-mat-chev{color:var(--dim);font-size:14px;transition:transform .2s;margin-left:auto;}
+.est-materia-body{display:none;border-top:1px solid var(--border);padding:12px 14px;}
+.est-materia-body.open{display:block;}
+.est-mat-icon{font-size:20px;flex-shrink:0;}
+.est-mat-info{flex:1;}
+.est-mat-name{font-size:13px;font-weight:600;}
+.est-mat-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.est-mat-pts{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;flex-shrink:0;}
+.est-stat-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);}
+.est-stat-row:last-child{border-bottom:none;}
+.est-stat-label{font-size:12px;color:var(--muted);flex:1;}
+.est-stat-val{font-size:12px;font-weight:600;color:var(--text);}
+.est-alerta{background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.2);border-radius:var(--rx);padding:10px 13px;margin-top:10px;font-size:12px;color:#f87171;line-height:1.6;}
+.est-dica{background:rgba(61,127,255,.06);border-left:3px solid var(--accent);border-radius:0 var(--rx) var(--rx) 0;padding:10px 13px;margin-top:10px;font-size:12px;color:#8ab0d8;line-height:1.6;}
+.est-dica strong{color:#fff;}
+.est-painel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.est-painel-box{border-radius:var(--rs);padding:12px;text-align:center;}
+.est-painel-val{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;line-height:1.1;}
+.est-painel-label{font-size:10px;margin-top:4px;}
+.est-erro-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+.est-erro-item:last-child{border-bottom:none;}
+.est-erro-num{width:26px;height:26px;border-radius:50%;background:var(--danger);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.est-erro-info{flex:1;}
+.est-erro-title{font-size:13px;font-weight:600;}
+.est-erro-desc{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5;}
+.est-mes-bloco{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);margin-bottom:8px;overflow:hidden;}
+.est-mes-hdr{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;}
+.est-mes-chev{color:var(--dim);font-size:14px;transition:transform .2s;margin-left:auto;}
+.est-mes-hdr.open .est-mes-chev{transform:rotate(90deg);}
+.est-mes-body{display:none;border-top:1px solid var(--border);padding:12px 14px;}
+.est-mes-body.open{display:block;}
+.est-mes-semana{padding:8px 0;border-bottom:1px solid var(--border);}
+.est-mes-semana:last-child{border-bottom:none;}
+.est-mes-sem-label{font-size:11px;font-weight:700;color:var(--accent2);margin-bottom:4px;}
+.est-mes-sem-foco{font-size:12px;color:var(--text);margin-bottom:3px;}
+.est-mes-sem-meta{font-size:11px;color:var(--muted);}
+.est-padrao{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;margin-bottom:8px;}
+.est-padrao-titulo{font-size:13px;font-weight:600;margin-bottom:6px;}
+.est-padrao-ex{background:var(--sf);border:1px solid var(--border);border-radius:var(--rx);padding:10px 12px;font-size:12px;color:var(--muted);font-style:italic;line-height:1.6;margin-bottom:6px;}
+.est-padrao-resp{font-size:12px;color:var(--accent2);}
+
+
+/* ESTRATEGIA */
+.est-nivel{border-radius:var(--r);margin-bottom:12px;overflow:hidden;}
+.est-nivel-hdr{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;}
+.est-nivel-hdr.open .est-nivel-chev{transform:rotate(90deg);}
+.est-nivel-icon{font-size:22px;flex-shrink:0;}
+.est-nivel-info{flex:1;}
+.est-nivel-title{font-size:14px;font-weight:700;}
+.est-nivel-sub{font-size:12px;margin-top:2px;opacity:.8;}
+.est-nivel-pts{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;flex-shrink:0;}
+.est-nivel-chev{font-size:14px;transition:transform .2s;opacity:.7;}
+.est-nivel-body{display:none;border-top:1px solid rgba(255,255,255,.08);padding:14px;}
+.est-nivel-body.open{display:block;}
+.est-materia{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+.est-materia:last-child{border-bottom:none;}
+.est-materia-num{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;flex-shrink:0;min-width:55px;text-align:center;}
+.est-materia-info{flex:1;}
+.est-materia-title{font-size:13px;font-weight:600;}
+.est-materia-desc{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;}
+.est-materia-tags{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
+.est-materia-tag{font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.08);color:var(--muted);}
+.est-horas-bar{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.est-horas-label{font-size:12px;color:var(--muted);min-width:140px;}
+.est-horas-track{flex:1;height:8px;background:var(--border);border-radius:99px;overflow:hidden;}
+.est-horas-fill{height:100%;border-radius:99px;}
+.est-horas-val{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;min-width:35px;text-align:right;}
+.est-padrão{background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;margin-bottom:7px;}
+.est-padrão-title{font-size:13px;font-weight:600;margin-bottom:6px;}
+.est-padrão-ex{font-size:12px;color:var(--muted);font-style:italic;line-height:1.6;border-left:3px solid var(--accent);padding-left:10px;margin-top:6px;}
+.est-padrão-resp{font-size:11px;font-weight:700;color:var(--accent2);margin-top:5px;}
+.est-erro{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+.est-erro:last-child{border-bottom:none;}
+.est-erro-num{width:26px;height:26px;border-radius:50%;background:var(--danger);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.est-erro-info{flex:1;}
+.est-erro-title{font-size:13px;font-weight:600;color:#f87171;}
+.est-erro-desc{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.5;}
+.est-mes-card{background:var(--sf2);border-left:4px solid var(--accent);border-radius:0 var(--rs) var(--rs) 0;padding:12px 14px;margin-bottom:8px;}
+.est-mes-label{font-size:10px;font-weight:700;letter-spacing:.8px;margin-bottom:6px;}
+.est-mes-title{font-size:13px;font-weight:600;margin-bottom:6px;}
+.est-mes-rows{display:flex;flex-direction:column;gap:4px;}
+.est-mes-row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);}
+.est-mes-row::before{content:"→";color:var(--accent);flex-shrink:0;}
+
+
+
+/* CRONÔMETRO */
+.tmr-wrap{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom));right:18px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.tmr-fab{width:62px;height:62px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(61,127,255,.45);transition:all .2s;font-family:'JetBrains Mono',monospace;}
+.tmr-fab:active{transform:scale(.94);}
+.tmr-fab-icon{font-size:22px;line-height:1;}
+.tmr-fab-time{font-size:10px;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.5px;margin-top:1px;}
+.tmr-fab.running{background:var(--accent2);}
+.tmr-fab.running .tmr-fab-icon{display:none;}
+.tmr-fab.running .tmr-fab-time{font-size:13px;margin-top:0;}
+.tmr-panel{background:var(--sf);border:1px solid var(--border);border-radius:var(--r);padding:16px;width:200px;box-shadow:0 8px 32px rgba(0,0,0,.5);display:none;}
+.tmr-panel.open{display:block;}
+.tmr-display{font-family:'JetBrains Mono',monospace;font-size:38px;font-weight:500;color:var(--accent2);text-align:center;letter-spacing:2px;margin-bottom:14px;}
+.tmr-btns{display:flex;gap:8px;}
+.tmr-btn{flex:1;border:none;border-radius:var(--rx);padding:11px 8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;}
+.tmr-start{background:var(--accent2);color:#080c14;}
+.tmr-stop{background:var(--danger);color:#fff;}
+.tmr-reset{background:var(--sf2);border:1px solid var(--border);color:var(--muted);}
+.tmr-sessao{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;font-family:'JetBrains Mono',monospace;}
+
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="hdt">
+    <div style="display:flex;align-items:center;">
+      <span class="badge">TCE-GO</span>
+      <div><div class="ltitle">Plano de Estudos · TI</div><div class="lsub">Técnico de Controle Externo · FCC · 17 Jan 2027</div></div>
+    </div>
+    <div class="epill"><div class="edays" id="daysLeft">—</div><div class="elabel">dias para a prova</div></div>
+  </div>
+  <div class="prow"><div class="pbar"><div class="pfill" id="overallBar" style="width:0%"></div></div><div class="ppct" id="overallPct">0%</div></div>
+</header>
+<nav>
+  <button class="nb active" onclick="showTab('painel',this)">Painel</button>
+  <button class="nb" onclick="showTab('cronograma',this)">📅 Cronograma</button>
+  <button class="nb" onclick="showTab('plano',this)">Plano</button>
+  <button class="nb" onclick="showTab('topicos',this)">Tópicos</button>
+  <button class="nb" onclick="showTab('gran',this)">📚 Gran</button>
+  <button class="nb" onclick="showTab('edital',this)">Edital</button>
+  <button class="nb" onclick="showTab('podcasts',this)">🎙️ Podcasts</button>
+  <button class="nb" onclick="showTab('notas',this)">Notas</button>
+  <button class="nb" onclick="showTab('discursiva',this)">📝 Discursiva</button>
+  <button class="nb" onclick="showTab('estrategia',this)">🎯 Estratégia</button>
+</nav>
+<main>
+
+<!-- PAINEL -->
+<div class="tab active" id="tab-painel">
+  <div class="mentor"><div class="mhdr"><div class="mav">🎯</div><div><div class="mname">Seu mentor — TCE-GO TI</div><div class="mrole">Especialista em concursos FCC · TI · Infraestrutura</div></div></div><div class="mmsg" id="mentorMsg">Carregando...</div></div>
+  <div class="sgrid">
+    <div class="sbox"><div class="sval" id="sTarefas">0</div><div class="slbl">tarefas feitas</div></div>
+    <div class="sbox"><div class="sval" id="sQuestoes">0</div><div class="slbl">questões respondidas</div></div>
+    <div class="sbox"><div class="sval" id="sHoras">0h</div><div class="slbl">horas estudadas</div></div>
+    <div class="sbox"><div class="sval" id="sDias">137</div><div class="slbl">dias para prova</div></div>
+  </div>
+  <div id="nextCard"></div>
+  <div class="card"><div class="ctitle">Progresso por fase</div><div id="faseProgress"></div></div>
+  <div class="card"><div class="ctitle">Seu fit com o conteúdo</div><div id="fitPanel"></div></div>
+</div>
+
+<!-- CRONOGRAMA -->
+<div class="tab" id="tab-cronograma">
+  <div class="cnav">
+    <button class="cbtn active" onclick="showCrono('hoje',this)">📍 Hoje</button>
+    <button class="cbtn" onclick="showCrono('semana',this)">📅 Semana</button>
+    <button class="cbtn" onclick="showCrono('mes',this)">🗓️ Mês</button>
+  </div>
+  <div class="cview active" id="cv-hoje"><div id="hojeContainer"></div></div>
+  <div class="cview" id="cv-semana"><div id="semanaContainer"></div></div>
+  <div class="cview" id="cv-mes"><div id="mesContainer"></div></div>
+</div>
+
+<!-- PLANO -->
+<div class="tab" id="tab-plano"><div id="planContainer"></div></div>
+
+<!-- TOPICOS -->
+<div class="tab" id="tab-topicos"><div id="topicsContainer"></div></div>
+
+
+<!-- GRAN -->
+<div class="tab" id="tab-gran">
+  <div class="mentor"><div class="mmsg"><strong>Gran Cursos integrado:</strong> cada dia tem as aulas com link direto para o curso certo. Marque cada aula ao concluir. Cardio: assista no iPad. Almoço: questões no QConcursos. Noite: continue as aulas.</div></div>
+  <div class="card" style="padding:12px 14px;margin-bottom:10px;">
+    <div class="brow" style="margin-top:0;margin-bottom:10px;">
+      <a href="https://www.grancursosonline.com.br/aluno/curso/s/tce-go-tribunal-de-contas-do-estado-de-goias-tecnico-de-controle-externo-especialidade-tecnologiia-da-informacao-pos-edital" target="_blank" class="btn btn-sm">📚 Curso TI</a>
+      <a href="https://www.grancursosonline.com.br/aluno/curso/s/tce-go-tribunal-de-contas-do-estado-de-goias-tecnico-de-controle-externo-especialidade-tecnologia-da-informacao-pos-edital-conhecimentos-gerais" target="_blank" class="btn btn-sm btn-g">📖 Gerais</a>
+      <a href="https://questoes.grancursosonline.com.br" target="_blank" class="btn btn-sm btn-v">✏️ Gran Questões</a>
+      <a href="https://qconcursos.com" target="_blank" class="btn btn-sm btn-b">🔵 QConcursos</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="font-size:12px;color:var(--muted);">Aulas concluídas</div>
+      <div class="gpbar"><div class="gpfill" id="granBar" style="width:0%"></div></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);" id="granPct">0%</div>
+    </div>
+  </div>
+  <div id="granContainer"></div>
+</div>
+
+<!-- EDITAL -->
+<div class="tab" id="tab-edital">
+  <div class="card">
+    <div class="ctitle">Dados oficiais</div>
+    <div class="inrow"><div class="inicon">📋</div><div><div class="inkey">Cargo</div><div class="inval">Técnico de Controle Externo — TI</div></div></div>
+    <div class="inrow"><div class="inicon">🏛️</div><div><div class="inkey">Órgão / Banca</div><div class="inval">TCE-GO · FCC</div></div></div>
+    <div class="inrow"><div class="inicon">💰</div><div><div class="inkey">Salário</div><div class="inval">R$ 11.862,19 + benefícios</div></div></div>
+    <div class="inrow"><div class="inicon">📌</div><div><div class="inkey">Vagas TI</div><div class="inval">10 vagas imediatas</div></div></div>
+    <div class="inrow"><div class="inicon">✍️</div><div><div class="inkey">Inscrições</div><div class="inval">05/10 a 06/11/2026 · <a href="https://www.concursosfcc.com.br" target="_blank" style="color:var(--accent);">concursosfcc.com.br</a> · R$ 100,00</div></div></div>
+    <div class="inrow"><div class="inicon">📅</div><div><div class="inkey">Prova</div><div class="inval">17/01/2027 · Goiânia-GO · 4h30</div></div></div>
+    <div class="inrow"><div class="inicon">📝</div><div><div class="inkey">Estrutura</div><div class="inval"><span class="chip">25 questões gerais</span><span class="chip">45 TI peso 2</span><span class="chip">Estudo de caso</span></div></div></div>
+    <div class="inrow"><div class="inicon">⚡</div><div><div class="inkey">Mínimo</div><div class="inval">150 pts objetivas · 50 pts discursiva</div></div></div>
+  </div>
+  <div class="card">
+    <div class="ctitle">📄 PDFs — baixe e salve no iPad</div>
+    <a class="pitem" href="https://portal.tce.go.gov.br" target="_blank"><div class="picon">📕</div><div class="pinf"><div class="ptit">Lei Orgânica TCE-GO — Lei 16.168/2007</div><div class="psub">portal.tce.go.gov.br · PRIORIDADE MÁXIMA</div></div><span class="pbadge" style="background:rgba(232,69,69,.15);color:#f87171;">BAIXAR</span></a>
+    <a class="pitem" href="https://portal.tce.go.gov.br" target="_blank"><div class="picon">📗</div><div class="pinf"><div class="ptit">Regimento Interno — Resolução 22/2008</div><div class="psub">portal.tce.go.gov.br · PRIORIDADE MÁXIMA</div></div><span class="pbadge" style="background:rgba(232,69,69,.15);color:#f87171;">BAIXAR</span></a>
+    <a class="pitem" href="https://portal.tce.go.gov.br" target="_blank"><div class="picon">📘</div><div class="pinf"><div class="ptit">Código de Ética dos Servidores TCE-GO</div><div class="psub">portal.tce.go.gov.br</div></div><span class="pbadge" style="background:rgba(240,165,0,.15);color:#fbbf24;">BAIXAR</span></a>
+    <a class="pitem" href="https://portal.tce.go.gov.br" target="_blank"><div class="picon">📙</div><div class="pinf"><div class="ptit">Resolução Administrativa nº 15/2024</div><div class="psub">portal.tce.go.gov.br</div></div><span class="pbadge" style="background:rgba(240,165,0,.15);color:#fbbf24;">BAIXAR</span></a>
+    <a class="pitem" href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm" target="_blank"><div class="picon">🇧🇷</div><div class="pinf"><div class="ptit">CF/88 — Arts. 37 e 70–75</div><div class="psub">planalto.gov.br</div></div><span class="pbadge" style="background:rgba(61,127,255,.15);color:#60a5fa;">ACESSAR</span></a>
+    <a class="pitem" href="https://legisla.casacivil.go.gov.br" target="_blank"><div class="picon">🏛️</div><div class="pinf"><div class="ptit">Constituição do Estado de Goiás</div><div class="psub">casacivil.go.gov.br</div></div><span class="pbadge" style="background:rgba(61,127,255,.15);color:#60a5fa;">ACESSAR</span></a>
+    <a class="pitem" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank"><div class="picon">🔐</div><div class="pinf"><div class="ptit">LGPD — Lei 13.709/2018</div><div class="psub">planalto.gov.br</div></div><span class="pbadge" style="background:rgba(0,229,160,.12);color:#00e5a0;">ACESSAR</span></a>
+    <a class="pitem" href="https://www.gov.br/casacivil/pt-br/central-de-conteudo/downloads/manual-de-redacao-da-presidencia-da-republica-3a-ed-versao-digital.pdf" target="_blank"><div class="picon">✍️</div><div class="pinf"><div class="ptit">Manual de Redação Oficial</div><div class="psub">gov.br · 3ª edição</div></div><span class="pbadge" style="background:rgba(61,127,255,.15);color:#60a5fa;">PDF</span></a>
+    <a class="pitem" href="https://www.concursosfcc.com.br" target="_blank"><div class="picon">📝</div><div class="pinf"><div class="ptit">Inscrição — concursosfcc.com.br</div><div class="psub">05/10 a 06/11/2026 · R$ 100,00</div></div><span class="pbadge" style="background:rgba(232,69,69,.15);color:#f87171;">INSCRIÇÃO</span></a>
+
+  <div class="card">
+    <div class="ctitle">📚 Leituras recomendadas — por prioridade</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Clique para abrir ou baixar. Salve nos Arquivos do iPad para ler offline.</div>
+
+    <div style="font-size:11px;font-weight:700;color:var(--danger);letter-spacing:.8px;margin:10px 0 8px;">⚠️ SETEMBRO — Legislação (leia antes das questões)</div>
+
+    <a class="pitem" href="https://www.amazon.com.br/Direito-Administrativo-Facilitado-Cyonil-Borges/dp/8530980433" target="_blank">
+      <div class="picon">📕</div>
+      <div class="pinf">
+        <div class="ptit">Direito Administrativo Facilitado — Cyonil Borges</div>
+        <div class="psub">O mais didático para quem nunca estudou direito. Leia do início ao fim em setembro. ~R$80 ou PDF gratuito nas buscas</div>
+      </div>
+      <span class="pbadge" style="background:rgba(232,69,69,.15);color:#f87171;">COMPRAR</span>
+    </a>
+
+    <a class="pitem" href="https://www.gov.br/casacivil/pt-br/central-de-conteudo/downloads/manual-de-redacao-da-presidencia-da-republica-3a-ed-versao-digital.pdf" target="_blank">
+      <div class="picon">✍️</div>
+      <div class="pinf">
+        <div class="ptit">Manual de Redação Oficial — Presidência da República</div>
+        <div class="psub">gov.br · 3ª edição · PDF gratuito — único livro necessário para Redação Oficial</div>
+      </div>
+      <span class="pbadge" style="background:rgba(0,229,160,.12);color:#00e5a0;">PDF GRÁTIS</span>
+    </a>
+
+    <a class="pitem" href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm" target="_blank">
+      <div class="picon">🇧🇷</div>
+      <div class="pinf">
+        <div class="ptit">CF/88 — Arts. 37 e 70 a 75</div>
+        <div class="psub">planalto.gov.br · Leia apenas esses artigos — Administração Pública e controle externo</div>
+      </div>
+      <span class="pbadge" style="background:rgba(61,127,255,.15);color:#60a5fa;">ACESSAR</span>
+    </a>
+
+    <div style="font-size:11px;font-weight:700;color:var(--warn);letter-spacing:.8px;margin:14px 0 8px;">📖 SETEMBRO — Português e Lógica</div>
+
+    <a class="pitem" href="https://www.amazon.com.br/Portugu%C3%AAs-para-Concursos-Ernani-Terra/dp/8530978153" target="_blank">
+      <div class="picon">📗</div>
+      <div class="pinf">
+        <div class="ptit">Português para Concursos — Ernani Terra</div>
+        <div class="psub">Linguagem simples, direto ao padrão FCC. PDF gratuito circula nas buscas ou ~R$70</div>
+      </div>
+      <span class="pbadge" style="background:rgba(240,165,0,.15);color:#fbbf24;">COMPRAR</span>
+    </a>
+
+    <a class="pitem" href="https://www.amazon.com.br/Racioc%C3%ADnio-L%C3%B3gico-Facilitado-Concursos-P%C3%BAblicos/dp/8530980069" target="_blank">
+      <div class="picon">🧠</div>
+      <div class="pinf">
+        <div class="ptit">Raciocínio Lógico Facilitado — Almir Morgado</div>
+        <div class="psub">Específico para FCC, exercícios progressivos. PDF gratuito circula nas buscas ou ~R$60</div>
+      </div>
+      <span class="pbadge" style="background:rgba(240,165,0,.15);color:#fbbf24;">COMPRAR</span>
+    </a>
+
+    <div style="font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.8px;margin:14px 0 8px;">🖥️ OUTUBRO — TI e Governança</div>
+
+    <a class="pitem" href="https://www.isaca.org/resources/cobit" target="_blank">
+      <div class="picon">📘</div>
+      <div class="pinf">
+        <div class="ptit">COBIT 2019 — Resumo gratuito em português</div>
+        <div class="psub">isaca.org · Baixe o framework resumido — não o livro completo. Gratuito após cadastro</div>
+      </div>
+      <span class="pbadge" style="background:rgba(0,229,160,.12);color:#00e5a0;">GRÁTIS</span>
+    </a>
+
+    <a class="pitem" href="https://www.axelos.com/certifications/itil-service-management/itil-4-foundation" target="_blank">
+      <div class="picon">☕</div>
+      <div class="pinf">
+        <div class="ptit">Guia ITIL 4 Foundation — AXELOS</div>
+        <div class="psub">axelos.com · Você já tem a base — use como revisão dos termos oficiais que a FCC cobra</div>
+      </div>
+      <span class="pbadge" style="background:rgba(61,127,255,.15);color:#60a5fa;">ACESSAR</span>
+    </a>
+
+    <div style="font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:.8px;margin:14px 0 8px;">🔍 COMO USAR — regra de ouro</div>
+    <div style="background:rgba(61,127,255,.06);border-left:3px solid var(--accent);border-radius:0 var(--rx) var(--rx) 0;padding:10px 13px;font-size:12px;color:#8ab0d8;line-height:1.7;">
+      <strong style="color:#fff;">Não leia tudo antes de fazer questões.</strong> O fluxo correto é: <strong style="color:#fff;">1)</strong> assista a aula no Gran → <strong style="color:#fff;">2)</strong> resolva 15 questões → <strong style="color:#fff;">3)</strong> quando errar algo que não entendeu, <em>aí</em> abra o livro na página certa → <strong style="color:#fff;">4)</strong> leia só o trecho necessário → <strong style="color:#fff;">5)</strong> resolva mais 5 questões sobre aquilo.<br><br>
+      Exceção: o <strong style="color:#fff;">Direito Administrativo Facilitado</strong> do Cyonil leia do início ao fim em setembro — você parte do zero em direito e precisa do contexto antes das questões.
+    </div>
+  </div>
+</div>
+
+<!-- PODCASTS -->
+<div class="tab" id="tab-podcasts">
+  <div class="mentor"><div class="mmsg"><strong>Podcasts para o carro e cardio:</strong> legislação e direito administrativo fixam melhor em áudio. Quando não entender algo, fale em voz alta a dúvida e anote ao chegar.</div></div>
+  <div class="ccard">
+    <div class="ctitle" style="color:#1DB954;margin-bottom:12px;">🚗 Playlist do Carro — Setembro</div>
+    <div class="cslbl">SEMANAS 1 E 2 — Entender o contexto</div>
+    <a class="citem" href="https://open.spotify.com/show/0PjhgXuoOTeB69AyCDv04b" target="_blank"><div class="cnum">1️⃣</div><div class="cinf"><div class="ctit">Direito Administrativo 2025 do Zero</div><div class="cdesc">Linguagem simples — contexto antes de ler as leis</div><div class="cwhen">▶ Do ep.1 em diante, na ordem</div></div><span class="cbtn2">ABRIR</span></a>
+    <div class="cslbl" style="margin-top:10px;">SEMANA 3 — Ouvir as leis em áudio</div>
+    <a class="citem" href="https://open.spotify.com/show/7HL8GWWGjzjxCM0nHFKBWO" target="_blank"><div class="cnum">2️⃣</div><div class="cinf"><div class="ctit">Leis para Concursos em Áudio</div><div class="cdesc">Feito por concurseiro — lê a lei com explicações simples</div><div class="cwhen">▶ Adm. Pública e Servidores primeiro</div></div><span class="cbtn2">ABRIR</span></a>
+    <div class="cslbl" style="margin-top:10px;">SEMANA 4 — Como a FCC cobra</div>
+    <a class="citem" href="https://open.spotify.com/show/7e8MtEQu55Z22k7SRy8YBr" target="_blank"><div class="cnum">3️⃣</div><div class="cinf"><div class="ctit">Direito Administrativo Direto</div><div class="cdesc">Sacadas para matar questões — padrão FCC</div><div class="cwhen">▶ Qualquer ep. sobre Adm. Pública</div></div><span class="cbtn2">ABRIR</span></a>
+  </div>
+  <div class="card">
+    <div class="ctitle">Todos os podcasts por tema</div>
+    <div class="pgtit">⚠️ Legislação — prioridade</div>
+    <a class="pcard" href="https://open.spotify.com/show/7HL8GWWGjzjxCM0nHFKBWO" target="_blank"><div class="pcicon">📜</div><div class="pcinf"><div class="pcname">Leis para Concursos em Áudio</div><div class="pcdesc">Lê a lei com explicação simples. Ideal para a Lei Orgânica no carro.</div><div class="pctags"><span class="pctag">Legislação</span></div></div><a class="spbadge" href="https://open.spotify.com/show/7HL8GWWGjzjxCM0nHFKBWO" target="_blank">▶ Spotify</a></a>
+    <a class="pcard" href="https://open.spotify.com/show/0PjhgXuoOTeB69AyCDv04b" target="_blank"><div class="pcicon">⚖️</div><div class="pcinf"><div class="pcname">Direito Administrativo 2025 do Zero</div><div class="pcdesc">Linguagem simples para quem nunca teve contato com direito.</div><div class="pctags"><span class="pctag">Iniciante</span></div></div><a class="spbadge" href="https://open.spotify.com/show/0PjhgXuoOTeB69AyCDv04b" target="_blank">▶ Spotify</a></a>
+    <a class="pcard" href="https://open.spotify.com/show/7e8MtEQu55Z22k7SRy8YBr" target="_blank"><div class="pcicon">🏆</div><div class="pcinf"><div class="pcname">Direito Administrativo Direto</div><div class="pcdesc">Sacadas para matar questões — foco no padrão FCC.</div><div class="pctags"><span class="pctag">FCC</span></div></div><a class="spbadge" href="https://open.spotify.com/show/7e8MtEQu55Z22k7SRy8YBr" target="_blank">▶ Spotify</a></a>
+    <div class="pgtit">🏛️ Governança TI</div>
+    <a class="pcard" href="https://open.spotify.com/show/3dxqEqDPu2cHbIOqDxG5cC" target="_blank"><div class="pcicon">☕</div><div class="pcinf"><div class="pcname">Café com ITIL</div><div class="pcdesc">O melhor podcast de ITIL v4 em português. SVS, práticas, princípios.</div><div class="pctags"><span class="pctag">ITIL v4</span></div></div><a class="spbadge" href="https://open.spotify.com/show/3dxqEqDPu2cHbIOqDxG5cC" target="_blank">▶ Spotify</a></a>
+    <div class="pgtit">💻 TI para Concursos</div>
+    <a class="pcard" href="https://open.spotify.com/show/6JKJLg814jlCBLn5KJQfKH" target="_blank"><div class="pcicon">🖥️</div><div class="pcinf"><div class="pcname">TI Em Foco — para Concurso Público</div><div class="pcdesc">Redes, segurança, banco de dados no padrão de provas.</div><div class="pctags"><span class="pctag">Redes</span><span class="pctag">FCC</span></div></div><a class="spbadge" href="https://open.spotify.com/show/6JKJLg814jlCBLn5KJQfKH" target="_blank">▶ Spotify</a></a>
+  </div>
+</div>
+
+<!-- NOTAS -->
+<div class="tab" id="tab-notas">
+  <div class="card">
+    <div class="ctitle">Anotações de estudo</div>
+    <textarea class="narea" id="noteArea" placeholder="Cole resumos, anote dúvidas, registre erros..."></textarea>
+    <div class="brow"><button class="btn btn-sm" onclick="saveNote()">Salvar</button><button class="btn btn-gh btn-sm" onclick="clearNote()">Limpar</button></div>
+    <div id="noteSaved" style="display:none;margin-top:7px;font-size:12px;color:var(--accent2);">✓ Salvo</div>
+  </div>
+  <div class="card">
+    <div class="ctitle">Registro de sessões</div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;">
+      <input type="date" id="sessDate" class="si" style="min-width:120px;">
+      <input type="number" id="sessHours" class="si" style="width:75px;" placeholder="Horas" min="0.5" max="12" step="0.5">
+      <input type="text" id="sessTopic" class="si" style="flex:1;min-width:130px;" placeholder="O que estudou?">
+      <button class="btn btn-sm" onclick="addSession()">+</button>
+    </div>
+    <div id="sessionList"></div>
+    <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent2);">Total: <span id="totalHours">0</span>h</div>
+  </div>
+</div>
+
+<!-- DISCURSIVA -->
+<div class="tab" id="tab-discursiva">
+
+  <div class="mentor">
+    <div class="mhdr"><div class="mav">📝</div><div><div class="mname">Guia do Estudo de Caso — TCE-GO TI</div><div class="mrole">FCC · Técnico de Controle Externo · TI</div></div></div>
+    <div class="mmsg">
+      O estudo de caso vale <strong>100 pontos</strong> e representa quase <strong>40% da nota final</strong> de quem fica na média. A FCC dá um cenário técnico e faz 2 ou 3 perguntas (A, B, C). Você responde diretamente em até 20 linhas por questão — <strong>sem introdução, sem conclusão</strong>. A avaliação é só por conteúdo e grade técnica. Quem cita as normas corretas e usa a terminologia oficial sai na frente.
+    </div>
+  </div>
+
+  <!-- KIT MÍNIMO -->
+  <div class="card">
+    <div class="ctitle">🔑 Kit mínimo — 10 referências que você precisa dominar</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Sabendo citar cada uma no contexto certo e usando 3 ou 4 por estudo de caso, você já está acima da média dos candidatos.</div>
+
+    <div class="disc-kit-row"><div class="disc-kit-norma">ISO/IEC 27001</div><div class="disc-kit-desc">Sistema de Gestão de Segurança da Informação (SGSI) — base de qualquer resposta sobre segurança</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">ISO/IEC 27002</div><div class="disc-kit-desc">Controles de segurança da informação — cite quando falar em medidas técnicas</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">ISO/IEC 27005</div><div class="disc-kit-desc">Gestão de riscos de TI — identificação, análise, avaliação e tratamento de riscos</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">ISO/IEC 27701</div><div class="disc-kit-desc">Extensão da 27001 para privacidade — cite junto com LGPD</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">LGPD 13.709/2018</div><div class="disc-kit-desc">Proteção de dados pessoais — controlador, operador, DPO, ANPD, bases legais</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">COBIT 2019</div><div class="disc-kit-desc">Governança e gestão de TI — domínios EDM (governança) + APO, BAI, DSS, MEA (gestão)</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">ITIL v4</div><div class="disc-kit-desc">Gestão de serviços de TI — SVS (Sistema de Valor de Serviço), cadeia de valor, práticas</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">ISO/IEC 38500</div><div class="disc-kit-desc">Governança corporativa de TI — responsabilidade, estratégia, aquisição, desempenho</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">Zero Trust</div><div class="disc-kit-desc">Modelo de segurança: nunca confie, sempre verifique — menor privilégio, MFA, microsegmentação</div></div>
+    <div class="disc-kit-row"><div class="disc-kit-norma">NIST CSF</div><div class="disc-kit-desc">Framework de cibersegurança: Identificar → Proteger → Detectar → Responder → Recuperar</div></div>
+  </div>
+
+  <!-- ESTRUTURA DA RESPOSTA -->
+  <div class="card">
+    <div class="ctitle">📐 Estrutura de resposta que funciona na FCC</div>
+    <div class="disc-estrutura-step">
+      <div class="disc-estrutura-num">1</div>
+      <div class="disc-estrutura-info"><div class="disc-estrutura-title">Diagnóstico</div><div class="disc-estrutura-desc">Identifique o problema central do cenário em 2 linhas. Seja direto — a FCC não quer enrolação.</div></div>
+    </div>
+    <div class="disc-estrutura-step">
+      <div class="disc-estrutura-num">2</div>
+      <div class="disc-estrutura-info"><div class="disc-estrutura-title">Solução técnica</div><div class="disc-estrutura-desc">O que fazer — com terminologia oficial. Cite pelo menos 2 normas ou frameworks relevantes.</div></div>
+    </div>
+    <div class="disc-estrutura-step">
+      <div class="disc-estrutura-num">3</div>
+      <div class="disc-estrutura-info"><div class="disc-estrutura-title">Justificativa normativa</div><div class="disc-estrutura-desc">Por que essa abordagem — referencie a norma exata: "conforme a ISO/IEC 27001..." ou "à luz do COBIT 2019..."</div></div>
+    </div>
+    <div class="disc-estrutura-step">
+      <div class="disc-estrutura-num">4</div>
+      <div class="disc-estrutura-info"><div class="disc-estrutura-title">Resultado esperado</div><div class="disc-estrutura-desc">O que melhora no TCE-GO com essa solução — 1 ou 2 linhas.</div></div>
+    </div>
+    <div style="background:rgba(232,69,69,.08);border:1px solid rgba(232,69,69,.2);border-radius:var(--rx);padding:10px 13px;margin-top:12px;font-size:12px;color:#f87171;line-height:1.6;">
+      ⚠️ <strong style="color:#fff;">Sem introdução e sem conclusão.</strong> Responda diretamente ao que foi perguntado. Indique os itens A, B, C claramente. Máximo 20 linhas por questão. A FCC penaliza quem foge do tema pedido.
+    </div>
+  </div>
+
+  <!-- TEMAS PROVÁVEIS -->
+  <div class="card">
+    <div class="ctitle">🎯 Temas mais prováveis — frases prontas para cada um</div>
+
+    <!-- INCIDENTE DE SEGURANÇA -->
+    <div class="disc-tema">
+      <div class="disc-tema-hdr" id="dth_inc" onclick="toggleDisc('inc')">
+        <div class="disc-tema-icon">🔴</div>
+        <div class="disc-tema-info">
+          <div class="disc-tema-title">Incidente de Segurança / Ransomware</div>
+          <div class="disc-tema-sub">Cenário: sistemas do TCE-GO comprometidos — diagnóstico e plano de resposta</div>
+        </div>
+        <span class="disc-tema-prob" style="background:rgba(232,69,69,.2);color:#f87171;">ALTA</span>
+        <div class="disc-tema-chev">›</div>
+      </div>
+      <div class="disc-tema-body" id="dtb_inc">
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;">Normas que você cita:</div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 27001</div><div class="disc-norma-desc">Base do plano de resposta a incidentes — SGSI</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ITIL v4</div><div class="disc-norma-desc">Prática de gerenciamento de incidentes — registro, categorização, escalonamento</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">Zero Trust</div><div class="disc-norma-desc">Menor privilégio, MFA, microsegmentação para prevenir reincidência</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">NIST CSF</div><div class="disc-norma-desc">Fases: Detectar → Responder → Recuperar</div></div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin:12px 0 8px;">Frase pronta — copie e adapte:</div>
+        <div class="disc-frase">"Recomenda-se a adoção de um plano de resposta a incidentes fundamentado na <strong>norma ISO/IEC 27001</strong>, contemplando as fases de identificação, contenção, erradicação, recuperação e lições aprendidas. A gestão de incidentes deve seguir as práticas do <strong>ITIL v4</strong>, garantindo o registro, categorização e escalonamento adequados. A implementação da arquitetura <strong>Zero Trust</strong> contribui para minimizar a superfície de ataque, adotando o princípio do menor privilégio e a autenticação multifator (MFA). O processo de recuperação deve seguir os controles da <strong>ISO/IEC 27002</strong> e o framework <strong>NIST CSF</strong> nas fases de Responder e Recuperar."</div>
+      </div>
+    </div>
+
+    <!-- LGPD -->
+    <div class="disc-tema">
+      <div class="disc-tema-hdr" id="dth_lgpd" onclick="toggleDisc('lgpd')">
+        <div class="disc-tema-icon">🔴</div>
+        <div class="disc-tema-info">
+          <div class="disc-tema-title">Proteção de Dados e LGPD</div>
+          <div class="disc-tema-sub">Cenário: TCE precisa adequar sistemas à LGPD — plano de conformidade</div>
+        </div>
+        <span class="disc-tema-prob" style="background:rgba(232,69,69,.2);color:#f87171;">ALTA</span>
+        <div class="disc-tema-chev">›</div>
+      </div>
+      <div class="disc-tema-body" id="dtb_lgpd">
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;">Normas que você cita:</div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">LGPD 13.709/2018</div><div class="disc-norma-desc">Controlador, operador, DPO, bases legais, direitos dos titulares, ANPD</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 27701</div><div class="disc-norma-desc">Extensão do SGSI para gestão de privacidade — cite sempre junto com LGPD</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 27001</div><div class="disc-norma-desc">Medidas técnicas de segurança para proteção dos dados pessoais</div></div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin:12px 0 8px;">Frase pronta:</div>
+        <div class="disc-frase">"O TCE-GO, na qualidade de <strong>controlador de dados pessoais</strong> nos termos da <strong>Lei 13.709/2018 (LGPD)</strong>, deve designar um <strong>Encarregado de Proteção de Dados (DPO)</strong>, mapear os dados tratados, identificar as bases legais aplicáveis e implementar medidas técnicas e organizacionais para garantir a segurança das informações. A conformidade deve ser apoiada pela <strong>ISO/IEC 27701</strong>, que estende o SGSI para a gestão de privacidade, e pela <strong>ISO/IEC 27001</strong> para os controles de segurança. Os direitos dos titulares — acesso, correção, eliminação e portabilidade — devem ser garantidos conforme os artigos 17 a 22 da LGPD."</div>
+      </div>
+    </div>
+
+    <!-- CLOUD -->
+    <div class="disc-tema">
+      <div class="disc-tema-hdr" id="dth_cloud" onclick="toggleDisc('cloud')">
+        <div class="disc-tema-icon">🔴</div>
+        <div class="disc-tema-info">
+          <div class="disc-tema-title">Implantação de Cloud Híbrida</div>
+          <div class="disc-tema-sub">Cenário: TCE quer migrar sistemas para nuvem — análise e plano</div>
+        </div>
+        <span class="disc-tema-prob" style="background:rgba(232,69,69,.2);color:#f87171;">ALTA</span>
+        <div class="disc-tema-chev">›</div>
+      </div>
+      <div class="disc-tema-body" id="dtb_cloud">
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;">Normas que você cita:</div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">IaaS/PaaS/SaaS</div><div class="disc-norma-desc">Modelos de serviço — saiba diferenciar e dar exemplos reais</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">SLA / RTO / RPO</div><div class="disc-norma-desc">SLA = acordo de nível de serviço · RTO = tempo de recuperação · RPO = ponto de recuperação</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">COBIT 2019</div><div class="disc-norma-desc">Governança da solução de nuvem — alinhamento aos objetivos institucionais</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 27017</div><div class="disc-norma-desc">Segurança em serviços de nuvem — cite para mostrar domínio do tema</div></div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin:12px 0 8px;">Frase pronta:</div>
+        <div class="disc-frase">"A migração para nuvem híbrida requer análise dos modelos de serviço disponíveis — <strong>IaaS, PaaS e SaaS</strong> — considerando disponibilidade, escalabilidade e segurança. O <strong>SLA (Service Level Agreement)</strong> deve estabelecer os indicadores <strong>RTO (Recovery Time Objective)</strong> e <strong>RPO (Recovery Point Objective)</strong> para continuidade dos serviços. A governança da solução deve ser orientada pelos princípios do <strong>COBIT 2019</strong> e pelas diretrizes da <strong>ISO/IEC 27017</strong> para segurança em serviços de nuvem. Os dados sensíveis do TCE-GO devem permanecer em nuvem privada, mitigando riscos de exposição."</div>
+      </div>
+    </div>
+
+    <!-- COBIT -->
+    <div class="disc-tema">
+      <div class="disc-tema-hdr" id="dth_cobit" onclick="toggleDisc('cobit')">
+        <div class="disc-tema-icon">🟡</div>
+        <div class="disc-tema-info">
+          <div class="disc-tema-title">Governança de TI com COBIT 2019</div>
+          <div class="disc-tema-sub">Cenário: auditoria identificou ausência de governança — roadmap de implementação</div>
+        </div>
+        <span class="disc-tema-prob" style="background:rgba(240,165,0,.15);color:#fbbf24;">MÉDIA</span>
+        <div class="disc-tema-chev">›</div>
+      </div>
+      <div class="disc-tema-body" id="dtb_cobit">
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;">Normas que você cita:</div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">COBIT 2019</div><div class="disc-norma-desc">EDM (governança) + APO, BAI, DSS, MEA (gestão) — cascata de metas</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 38500</div><div class="disc-norma-desc">Governança corporativa de TI — responsabilidade, estratégia, desempenho</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ITIL v4</div><div class="disc-norma-desc">Complementa o COBIT na gestão dos serviços de TI</div></div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin:12px 0 8px;">Frase pronta:</div>
+        <div class="disc-frase">"A implementação da governança de TI deve ser orientada pelo <strong>COBIT 2019</strong>, que estrutura os objetivos em dois domínios: <strong>governança (EDM)</strong> e <strong>gestão (APO, BAI, DSS, MEA)</strong>. A cascata de metas do COBIT permite alinhar os objetivos de TI aos objetivos institucionais do TCE-GO. Complementarmente, a <strong>ISO/IEC 38500</strong> define os princípios de governança corporativa de TI — responsabilidade, estratégia, aquisição, desempenho, conformidade e comportamento humano. O <strong>ITIL v4</strong> apoia a gestão dos serviços por meio do Sistema de Valor de Serviço (SVS)."</div>
+      </div>
+    </div>
+
+    <!-- GESTÃO DE RISCOS -->
+    <div class="disc-tema">
+      <div class="disc-tema-hdr" id="dth_riscos" onclick="toggleDisc('riscos')">
+        <div class="disc-tema-icon">🟡</div>
+        <div class="disc-tema-info">
+          <div class="disc-tema-title">Gestão de Riscos de TI</div>
+          <div class="disc-tema-sub">Cenário: TCE precisa implementar gestão de riscos — metodologia e plano</div>
+        </div>
+        <span class="disc-tema-prob" style="background:rgba(240,165,0,.15);color:#fbbf24;">MÉDIA</span>
+        <div class="disc-tema-chev">›</div>
+      </div>
+      <div class="disc-tema-body" id="dtb_riscos">
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;">Normas que você cita:</div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 27005</div><div class="disc-norma-desc">Gestão de riscos de TI — identificação, análise, avaliação, tratamento</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 27002</div><div class="disc-norma-desc">Controles para tratamento dos riscos identificados</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">COBIT 2019 — APO12</div><div class="disc-norma-desc">Objetivo de gestão específico para gestão de riscos</div></div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin:12px 0 8px;">Frase pronta:</div>
+        <div class="disc-frase">"A gestão de riscos de TI deve ser implementada conforme a <strong>ISO/IEC 27005</strong>, contemplando as etapas de identificação, análise, avaliação e tratamento dos riscos. O tratamento pode envolver as opções de <strong>mitigação, aceitação, transferência ou eliminação</strong> do risco. Os controles adotados devem estar alinhados à <strong>ISO/IEC 27002</strong> e registrados no Plano de Tratamento de Riscos (PTR). O processo deve ser integrado à governança de TI por meio do objetivo <strong>APO12 do COBIT 2019</strong>, garantindo o monitoramento contínuo dos riscos institucionais."</div>
+      </div>
+    </div>
+
+    <!-- CONTINUIDADE -->
+    <div class="disc-tema">
+      <div class="disc-tema-hdr" id="dth_cont" onclick="toggleDisc('cont')">
+        <div class="disc-tema-icon">🟡</div>
+        <div class="disc-tema-info">
+          <div class="disc-tema-title">Continuidade de Negócios / Plano de Contingência</div>
+          <div class="disc-tema-sub">Cenário: queda de datacenter — plano de recuperação e continuidade</div>
+        </div>
+        <span class="disc-tema-prob" style="background:rgba(240,165,0,.15);color:#fbbf24;">MÉDIA</span>
+        <div class="disc-tema-chev">›</div>
+      </div>
+      <div class="disc-tema-body" id="dtb_cont">
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;">Normas que você cita:</div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 22301</div><div class="disc-norma-desc">Sistema de Gestão de Continuidade de Negócios (SGCN) — norma específica</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">RTO / RPO</div><div class="disc-norma-desc">RTO = tempo máximo de recuperação · RPO = ponto máximo de perda de dados aceitável</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ITIL v4</div><div class="disc-norma-desc">Prática de gerenciamento de continuidade de serviço de TI</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">NIST CSF</div><div class="disc-norma-desc">Fase Recuperar — estratégias de restauração e comunicação</div></div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin:12px 0 8px;">Frase pronta:</div>
+        <div class="disc-frase">"O Plano de Continuidade de Negócios (PCN) deve ser estruturado conforme a <strong>ISO 22301</strong>, estabelecendo os parâmetros de <strong>RTO (Recovery Time Objective)</strong> e <strong>RPO (Recovery Point Objective)</strong> para cada sistema crítico do TCE-GO. A estratégia de recuperação deve contemplar backup offsite, site alternativo e redundância de infraestrutura. A prática de <strong>gerenciamento de continuidade de serviço de TI do ITIL v4</strong> orienta a manutenção e os testes periódicos do plano. A fase de Recuperar do <strong>NIST CSF</strong> define as atividades de restauração e comunicação com as partes interessadas."</div>
+      </div>
+    </div>
+
+    <!-- DEVSECOPS -->
+    <div class="disc-tema">
+      <div class="disc-tema-hdr" id="dth_devs" onclick="toggleDisc('devs')">
+        <div class="disc-tema-icon">🟢</div>
+        <div class="disc-tema-info">
+          <div class="disc-tema-title">DevSecOps / Desenvolvimento Seguro</div>
+          <div class="disc-tema-sub">Cenário: TCE quer modernizar desenvolvimento com segurança integrada</div>
+        </div>
+        <span class="disc-tema-prob" style="background:rgba(0,229,160,.1);color:#00e5a0;">POSSÍVEL</span>
+        <div class="disc-tema-chev">›</div>
+      </div>
+      <div class="disc-tema-body" id="dtb_devs">
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;">Normas que você cita:</div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">DevSecOps</div><div class="disc-norma-desc">Integração de segurança em todo o ciclo de desenvolvimento — shift-left security</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">OWASP Top 10</div><div class="disc-norma-desc">10 vulnerabilidades mais críticas em aplicações web — referência padrão</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">ISO 27001</div><div class="disc-norma-desc">Controles de segurança aplicados ao desenvolvimento de sistemas</div></div>
+        <div class="disc-norma-row"><div class="disc-norma-badge">CI/CD Pipeline</div><div class="disc-norma-desc">Integração e entrega contínuas com testes de segurança automatizados (SAST, DAST)</div></div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin:12px 0 8px;">Frase pronta:</div>
+        <div class="disc-frase">"A adoção do modelo <strong>DevSecOps</strong> integra a segurança em todas as fases do ciclo de desenvolvimento de software, aplicando o princípio <strong>shift-left security</strong> — antecipando a identificação de vulnerabilidades. O pipeline de <strong>CI/CD</strong> deve incorporar ferramentas de análise estática (SAST) e dinâmica (DAST) de segurança, além de verificações baseadas no <strong>OWASP Top 10</strong>. Os controles de desenvolvimento seguro devem estar alinhados à <strong>ISO/IEC 27001</strong>, garantindo a rastreabilidade e o controle de versões por meio de ferramentas como Git."</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TREINO SEMANAL -->
+  <div class="card">
+    <div class="ctitle">🏋️ Treino semanal — todo sábado</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.7;">Escolha um cenário abaixo, escreva sua resposta em papel (como na prova) em até 20 linhas, depois compare com a frase pronta acima. <strong style="color:var(--text);">Pratique escrever à mão</strong> — na prova você escreve no caderno de respostas, não digita.</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="background:var(--sf2);border:1px solid var(--border);border-radius:var(--rx);padding:12px 14px;">
+        <div style="font-size:11px;font-weight:700;color:var(--danger);margin-bottom:6px;">SÁBADO 1 — Setembro</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Cenário: incidente de ransomware</div>
+        <div style="font-size:12px;color:var(--muted);">O TCE-GO identificou que seus servidores foram comprometidos por ransomware, com dados criptografados e sistemas indisponíveis. A) Descreva as fases do plano de resposta ao incidente. B) Indique as normas e boas práticas aplicáveis. C) Proponha medidas preventivas para evitar reincidência.</div>
+      </div>
+      <div style="background:var(--sf2);border:1px solid var(--border);border-radius:var(--rx);padding:12px 14px;">
+        <div style="font-size:11px;font-weight:700;color:var(--danger);margin-bottom:6px;">SÁBADO 2 — Outubro</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Cenário: adequação à LGPD</div>
+        <div style="font-size:12px;color:var(--muted);">O TCE-GO trata dados pessoais de servidores e jurisdicionados sem política formal de privacidade. A) Identifique o papel do TCE-GO na LGPD. B) Descreva as medidas técnicas e organizacionais necessárias. C) Indique como implementar os direitos dos titulares.</div>
+      </div>
+      <div style="background:var(--sf2);border:1px solid var(--border);border-radius:var(--rx);padding:12px 14px;">
+        <div style="font-size:11px;font-weight:700;color:var(--warn);margin-bottom:6px;">SÁBADO 3 — Novembro</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Cenário: migração para cloud híbrida</div>
+        <div style="font-size:12px;color:var(--muted);">O TCE-GO pretende migrar seus sistemas para uma solução de nuvem híbrida. A) Analise os modelos de serviço disponíveis e indique o mais adequado. B) Descreva os critérios de segurança e governança para a migração. C) Defina os parâmetros de RTO e RPO para os sistemas críticos.</div>
+      </div>
+      <div style="background:var(--sf2);border:1px solid var(--border);border-radius:var(--rx);padding:12px 14px;">
+        <div style="font-size:11px;font-weight:700;color:var(--warn);margin-bottom:6px;">SÁBADO 4 — Novembro</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Cenário: implementação de governança de TI</div>
+        <div style="font-size:12px;color:var(--muted);">Auditoria identificou que o TCE-GO não possui framework de governança de TI implementado. A) Indique o framework mais adequado e justifique. B) Descreva os domínios prioritários para implementação. C) Como alinhar os objetivos de TI aos objetivos institucionais.</div>
+      </div>
+      <div style="background:var(--sf2);border:1px solid var(--border);border-radius:var(--rx);padding:12px 14px;">
+        <div style="font-size:11px;font-weight:700;color:var(--accent);margin-bottom:6px;">SÁBADOS 5 e 6 — Dezembro</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Cenário: gestão de riscos + continuidade</div>
+        <div style="font-size:12px;color:var(--muted);">O TCE-GO não possui plano formal de gestão de riscos de TI nem plano de continuidade. Elabore um plano contemplando: A) Metodologia de gestão de riscos. B) Plano de continuidade de negócios com RTO e RPO. C) Normas aplicáveis e responsáveis.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ESTRATEGIA -->
+<div class="tab" id="tab-estrategia">
+
+  <div class="mentor">
+    <div class="mhdr"><div class="mav">🎯</div><div><div class="mname">Análise Estratégica — TCE-GO TI 2027</div><div class="mrole">Baseada no histórico FCC em tribunais de contas 2022–2025</div></div></div>
+    <div class="mmsg"><strong>Use esta aba para direcionar 100% do seu estudo.</strong> Aqui está onde gastar energia, onde não gastar, os padrões de questão da FCC e os erros que eliminam candidatos. Consulte antes de estudar cada tema para saber exatamente o que importa.</div>
+  </div>
+
+  <!-- PAINEL DE PONTOS -->
+  <div class="card">
+    <div class="ctitle">⚡ Mapa de pontos — onde está sua aprovação</div>
+    <div class="est-painel-grid">
+      <div class="est-painel-box" style="background:rgba(232,69,69,.1);border:1px solid rgba(232,69,69,.3);">
+        <div class="est-painel-val" style="color:#f87171;">40</div>
+        <div class="est-painel-label" style="color:#f87171;">pts máx<br>Segurança+BD</div>
+      </div>
+      <div class="est-painel-box" style="background:rgba(61,127,255,.1);border:1px solid rgba(61,127,255,.3);">
+        <div class="est-painel-val" style="color:#60a5fa;">28</div>
+        <div class="est-painel-label" style="color:#60a5fa;">pts máx<br>Redes+Cloud+Gov.</div>
+      </div>
+      <div class="est-painel-box" style="background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.3);">
+        <div class="est-painel-val" style="color:#00e5a0;">50</div>
+        <div class="est-painel-label" style="color:#00e5a0;">pts máx<br>Gerais (Ptg+Log+Leg)</div>
+      </div>
+    </div>
+    <div style="background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;font-size:12px;color:var(--muted);line-height:1.8;">
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);"><span>Mínimo para habilitação (obj.)</span><span style="color:var(--warn);font-weight:700;">150 pts</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);"><span>Mínimo estudo de caso</span><span style="color:var(--warn);font-weight:700;">50 pts</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);"><span>Meta para top 10 (obj.)</span><span style="color:var(--accent2);font-weight:700;">160–175 pts</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;"><span>Meta estudo de caso top 10</span><span style="color:var(--accent2);font-weight:700;">70+ pts</span></div>
+    </div>
+    <div class="est-dica" style="margin-top:10px;">
+      💡 <strong>Nota por escore padronizado:</strong> a FCC não conta só seus acertos — compara com o desempenho de todos os candidatos. Acertar mais que a média do grupo é o que garante nota alta. Por isso, a estratégia não é "passar no mínimo" — é <strong>superar a concorrência nos temas que mais valem pontos.</strong>
+    </div>
+  </div>
+
+  <!-- NÍVEIS DE PRIORIDADE -->
+  <div class="card">
+    <div class="ctitle">🔴 Nível 1 — Máxima energia (60% do tempo de TI)</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Estes 3 temas somam <strong style="color:#f87171;">40 pontos</strong> na prova objetiva. São onde a maioria dos primeiros colocados se diferencia.</div>
+
+    <!-- SEGURANÇA -->
+    <div class="est-materia">
+      <div class="est-materia-hdr" id="emh_seg" onclick="toggleEst('seg')">
+        <div class="est-mat-icon">🔐</div>
+        <div class="est-mat-info">
+          <div class="est-mat-name">Segurança da Informação + LGPD</div>
+          <div class="est-mat-sub">8 questões × peso 2 = 16 pontos — maior bloco da prova</div>
+        </div>
+        <span class="est-mat-pts" style="background:rgba(232,69,69,.2);color:#f87171;">16 pts</span>
+        <div class="est-mat-chev">›</div>
+      </div>
+      <div class="est-materia-body" id="emb_seg">
+        <div class="est-stat-row"><div class="est-stat-label">Questões esperadas</div><div class="est-stat-val">8 de 45</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Peso na prova total</div><div class="est-stat-val">8% das questões = 13% dos pontos</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Frequência no histórico FCC</div><div class="est-stat-val">Aparece em 100% dos concursos TI</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Temas mais cobrados</div><div class="est-stat-val">ISO 27001 · ISO 27002 · ISO 27005 · LGPD · CID · Criptografia · Zero Trust</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Seu nível atual</div><div class="est-stat-val">★★★★☆ — vivência prática, formalizar terminologia</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Horas recomendadas</div><div class="est-stat-val">40–50 horas (outubro inteiro)</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Meta de questões</div><div class="est-stat-val">150+ questões FCC antes da prova</div></div>
+        <div class="est-dica">
+          💡 <strong>Como a FCC cobra:</strong> dá uma situação e pede qual norma se aplica. "Qual norma trata de gestão de riscos?" → ISO 27005 (não 27001, não 27002). Decorar para qual finalidade serve cada ISO é o que diferencia quem acerta de quem erra.
+        </div>
+      </div>
+    </div>
+
+    <!-- BANCO DE DADOS -->
+    <div class="est-materia">
+      <div class="est-materia-hdr" id="emh_bd" onclick="toggleEst('bd')">
+        <div class="est-mat-icon">🗄️</div>
+        <div class="est-mat-info">
+          <div class="est-mat-name">Banco de Dados + SQL</div>
+          <div class="est-mat-sub">6 questões × peso 2 = 12 pontos — SQL aparece em toda prova FCC</div>
+        </div>
+        <span class="est-mat-pts" style="background:rgba(232,69,69,.2);color:#f87171;">12 pts</span>
+        <div class="est-mat-chev">›</div>
+      </div>
+      <div class="est-materia-body" id="emb_bd">
+        <div class="est-stat-row"><div class="est-stat-label">Questões esperadas</div><div class="est-stat-val">6 de 45</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Frequência no histórico FCC</div><div class="est-stat-val">SQL e modelagem em 100% dos editais de tribunais</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Temas mais cobrados</div><div class="est-stat-val">SQL (SELECT, JOIN, GROUP BY) · MER · Normalização · Views · NoSQL</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Seu nível atual</div><div class="est-stat-val">★★★☆☆ — usa no OPUS, formalizar SQL</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Horas recomendadas</div><div class="est-stat-val">30–35 horas (setembro + outubro)</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Meta de questões</div><div class="est-stat-val">120+ questões FCC antes da prova</div></div>
+        <div class="est-dica">
+          💡 <strong>Como a FCC cobra:</strong> dá um esquema de tabelas e pede para escrever ou completar uma query SQL. Treinar escrevendo queries à mão — não só lendo — é o que fixa. Foco especial em JOIN (INNER, LEFT, RIGHT) e GROUP BY com HAVING.
+        </div>
+      </div>
+    </div>
+
+    <!-- GOVERNANÇA -->
+    <div class="est-materia">
+      <div class="est-materia-hdr" id="emh_gov" onclick="toggleEst('gov')">
+        <div class="est-mat-icon">🏛️</div>
+        <div class="est-mat-info">
+          <div class="est-mat-name">Governança de TI — COBIT 2019 + ITIL v4</div>
+          <div class="est-mat-sub">6 questões × peso 2 = 12 pontos — cobrado em tribunais de contas sempre</div>
+        </div>
+        <span class="est-mat-pts" style="background:rgba(232,69,69,.2);color:#f87171;">12 pts</span>
+        <div class="est-mat-chev">›</div>
+      </div>
+      <div class="est-materia-body" id="emb_gov">
+        <div class="est-stat-row"><div class="est-stat-label">Questões esperadas</div><div class="est-stat-val">6 de 45</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Padrão FCC em 2025</div><div class="est-stat-val">COBIT 2019 fatores de design cobrado na SEFAZ-PI 2025</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Temas mais cobrados</div><div class="est-stat-val">COBIT domínios (EDM/APO/BAI/DSS/MEA) · Cascata de metas · ITIL SVS · Práticas ITIL</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Seu nível atual</div><div class="est-stat-val">★★☆☆☆ — COBIT é seu maior gap teórico</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Horas recomendadas</div><div class="est-stat-val">35–40 horas (setembro + outubro)</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Meta de questões</div><div class="est-stat-val">100+ questões FCC antes da prova</div></div>
+        <div class="est-dica">
+          💡 <strong>Como a FCC cobra:</strong> "O COBIT 2019 define ___ domínios de gestão: APO, BAI, ___, MEA." Preencher lacunas com os nomes exatos dos domínios. Você precisa decorar as siglas e o que cada domínio significa — não os 40 objetivos, só os 5 domínios e suas funções.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ctitle">🟡 Nível 2 — Alta energia (30% do tempo de TI)</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Estes temas somam <strong style="color:#fbbf24;">32 pontos</strong>. Você já tem base em redes — o esforço é menor aqui.</div>
+
+    <div class="est-materia">
+      <div class="est-materia-hdr" id="emh_red" onclick="toggleEst('red')">
+        <div class="est-mat-icon">🌐</div>
+        <div class="est-mat-info">
+          <div class="est-mat-name">Redes + Cloud + SO</div>
+          <div class="est-mat-sub">7 questões × peso 2 = 14 pontos — você já domina na prática</div>
+        </div>
+        <span class="est-mat-pts" style="background:rgba(240,165,0,.15);color:#fbbf24;">14 pts</span>
+        <div class="est-mat-chev">›</div>
+      </div>
+      <div class="est-materia-body" id="emb_red">
+        <div class="est-stat-row"><div class="est-stat-label">Questões esperadas</div><div class="est-stat-val">7 de 45</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Temas mais cobrados</div><div class="est-stat-val">OSI camadas · TCP/IP · DNS/DHCP/HTTP · VPN · IaaS/PaaS/SaaS · SLA/RTO/RPO</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Seu nível atual</div><div class="est-stat-val">★★★★★ — domínio total, só formalizar</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Horas recomendadas</div><div class="est-stat-val">15–20 horas (setembro)</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Meta de questões</div><div class="est-stat-val">80+ questões FCC</div></div>
+        <div class="est-dica">💡 <strong>Estratégia:</strong> você já sabe fazer — aprenda como a FCC pergunta. Monte uma tabela OSI com camada, função, protocolo e dispositivo. Resolve 30 questões de OSI e você vai parar de errar nesse tema em 2 dias.</div>
+      </div>
+    </div>
+
+    <div class="est-materia">
+      <div class="est-materia-hdr" id="emh_eng" onclick="toggleEst('eng')">
+        <div class="est-mat-icon">⚙️</div>
+        <div class="est-mat-info">
+          <div class="est-mat-name">Engenharia de Software + DevOps</div>
+          <div class="est-mat-sub">5 questões × peso 2 = 10 pontos — Scrum é o tema mais cobrado</div>
+        </div>
+        <span class="est-mat-pts" style="background:rgba(240,165,0,.15);color:#fbbf24;">10 pts</span>
+        <div class="est-mat-chev">›</div>
+      </div>
+      <div class="est-materia-body" id="emb_eng">
+        <div class="est-stat-row"><div class="est-stat-label">Questões esperadas</div><div class="est-stat-val">5 de 45</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Temas mais cobrados</div><div class="est-stat-val">Scrum (papéis/eventos/artefatos) · UML · CI/CD · Docker · SOLID</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Seu nível atual</div><div class="est-stat-val">★★★☆☆ — usa no dia a dia, formalizar</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Horas recomendadas</div><div class="est-stat-val">20–25 horas (novembro)</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Meta de questões</div><div class="est-stat-val">80+ questões FCC</div></div>
+        <div class="est-dica">💡 <strong>Estratégia:</strong> Scrum tem 3 papéis, 5 eventos e 3 artefatos. Decorar esses 11 itens com os nomes exatos resolve boa parte das questões de Eng. de Software. A FCC adora pedir "qual NÃO é um artefato do Scrum?"</div>
+      </div>
+    </div>
+
+    <div class="est-materia">
+      <div class="est-materia-hdr" id="emh_leg" onclick="toggleEst('leg')">
+        <div class="est-mat-icon">📜</div>
+        <div class="est-mat-info">
+          <div class="est-mat-name">Legislação TI — LGPD + Marco Civil + Governo Digital</div>
+          <div class="est-mat-sub">4 questões × peso 2 = 8 pontos — LGPD já entra em Segurança também</div>
+        </div>
+        <span class="est-mat-pts" style="background:rgba(240,165,0,.15);color:#fbbf24;">8 pts</span>
+        <div class="est-mat-chev">›</div>
+      </div>
+      <div class="est-materia-body" id="emb_leg">
+        <div class="est-stat-row"><div class="est-stat-label">Questões esperadas</div><div class="est-stat-val">4 de 45</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Temas mais cobrados</div><div class="est-stat-val">LGPD artigos principais · Marco Civil da Internet · Lei de Governo Digital</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Horas recomendadas</div><div class="est-stat-val">10–12 horas (outubro)</div></div>
+        <div class="est-stat-row"><div class="est-stat-label">Meta de questões</div><div class="est-stat-val">50+ questões FCC</div></div>
+        <div class="est-dica">💡 <strong>Artigos da LGPD que mais caem:</strong> Art. 5 (definições: controlador, operador, DPO, dado pessoal sensível) · Art. 7 (bases legais) · Art. 17–22 (direitos dos titulares) · Art. 46 (medidas de segurança). Decorar esses 4 blocos resolve a maioria das questões.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ctitle">🟢 Nível 3 — Energia mínima (10% do tempo de TI)</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Estes temas somam apenas <strong style="color:#00e5a0;">14 pontos</strong>. Não invista tempo proporcional aqui.</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);">
+        <div style="font-size:16px;">🤖</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:500;">IA Generativa + Ciência de Dados</div><div style="font-size:11px;color:var(--muted);">4 questões · 8 pts · Tema novo — FCC ainda está padronizando. Você já usa no dia a dia.</div></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#00e5a0;background:rgba(0,229,160,.1);padding:2px 7px;border-radius:4px;">8 pts</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);">
+        <div style="font-size:16px;">🇬🇧</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:500;">Língua Inglesa (Leitura Técnica)</div><div style="font-size:11px;color:var(--muted);">1 questão · 2 pts · Interpretar texto técnico. Quem trabalha com TI já sabe.</div></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#00e5a0;background:rgba(0,229,160,.1);padding:2px 7px;border-radius:4px;">2 pts</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);">
+        <div style="font-size:16px;">🤖</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:500;">Eng. de Software Assistida por IA</div><div style="font-size:11px;color:var(--muted);">1 questão · 2 pts · Tema novíssimo, histórico zero. Leitura rápida suficiente.</div></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#00e5a0;background:rgba(0,229,160,.1);padding:2px 7px;border-radius:4px;">2 pts</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONHECIMENTOS GERAIS -->
+  <div class="card">
+    <div class="ctitle">📋 Conhecimentos Gerais — 25 questões (50 pontos)</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Eliminatório. Quem negligencia gerais não passa — independente da nota em TI.</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.2);border-radius:var(--rs);">
+        <div style="font-size:16px;">📝</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:600;">Língua Portuguesa + Redação Oficial</div><div style="font-size:11px;color:var(--muted);">10 questões · 20 pts · A FCC é conhecida por português difícil. Maior risco de eliminação.</div></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f87171;background:rgba(232,69,69,.15);padding:2px 7px;border-radius:4px;">20 pts</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(240,165,0,.06);border:1px solid rgba(240,165,0,.2);border-radius:var(--rs);">
+        <div style="font-size:16px;">🧮</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:600;">Matemática e Raciocínio Lógico</div><div style="font-size:11px;color:var(--muted);">8 questões · 16 pts · Questões diretas mas exigem prática. Proposições lógicas sempre caem.</div></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#fbbf24;background:rgba(240,165,0,.12);padding:2px 7px;border-radius:4px;">16 pts</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.2);border-radius:var(--rs);">
+        <div style="font-size:16px;">⚖️</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:600;">Legislação Institucional TCE-GO</div><div style="font-size:11px;color:var(--muted);">7 questões · 14 pts · Eliminatório na prática. Quem zera legislação não passa.</div></div>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#f87171;background:rgba(232,69,69,.15);padding:2px 7px;border-radius:4px;">14 pts</span>
+      </div>
+    </div>
+    <div class="est-alerta" style="margin-top:10px;">⚠️ <strong style="color:#fff;">Atenção crítica:</strong> candidatos de TI perdem a prova em Conhecimentos Gerais, não em TI. O erro mais comum é estudar 90% em TI e chegar na prova errando 6+ questões de português e legislação.</div>
+  </div>
+
+  <!-- DISTRIBUIÇÃO DE HORAS -->
+  <div class="card">
+    <div class="ctitle">⏱️ Distribuição de horas — 3 meses de conteúdo</div>
+
+    <div class="est-mes-bloco">
+      <div class="est-mes-hdr" id="emsh_set" onclick="toggleEstMes('set')">
+        <div style="width:10px;height:10px;border-radius:50%;background:#e84545;flex-shrink:0;"></div>
+        <div style="flex:1;font-size:13px;font-weight:600;">Setembro — Base e legislação</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);">~88 horas</div>
+        <div class="est-mes-chev">›</div>
+      </div>
+      <div class="est-mes-body" id="emsb_set">
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S1 (02–07/set)</div><div class="est-mes-sem-foco">Português + Lógica base + primeiras aulas TI</div><div class="est-mes-sem-meta">Meta: 50 questões FCC · 20h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S2 (08–14/set)</div><div class="est-mes-sem-foco">Redes OSI completo + CF/88 + Concordância</div><div class="est-mes-sem-meta">Meta: 70 questões FCC · 22h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S3 (15–21/set)</div><div class="est-mes-sem-foco">Redação Oficial + COBIT básico + ITIL SVS</div><div class="est-mes-sem-meta">Meta: 80 questões FCC · 22h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S4 (22–30/set)</div><div class="est-mes-sem-foco">Lei Orgânica TCE-GO + Regimento + BD + Cloud</div><div class="est-mes-sem-meta">Meta: 100 questões FCC · 24h</div></div>
+      </div>
+    </div>
+
+    <div class="est-mes-bloco">
+      <div class="est-mes-hdr" id="emsh_out" onclick="toggleEstMes('out')">
+        <div style="width:10px;height:10px;border-radius:50%;background:#f0a500;flex-shrink:0;"></div>
+        <div style="flex:1;font-size:13px;font-weight:600;">Outubro — TI pesado (Nível 1)</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);">~98 horas</div>
+        <div class="est-mes-chev">›</div>
+      </div>
+      <div class="est-mes-body" id="emsb_out">
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S5 (01–07/out)</div><div class="est-mes-sem-foco">Segurança ISO 27001 + ISO 27005 + LGPD</div><div class="est-mes-sem-meta">Meta: 80 questões FCC · 24h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S6 (08–14/out)</div><div class="est-mes-sem-foco">Segurança ISO 27002 + ITIL Práticas finais</div><div class="est-mes-sem-meta">Meta: 80 questões FCC · 24h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S7 (15–21/out)</div><div class="est-mes-sem-foco">Cloud AWS + DevSecOps + Docker + Kubernetes</div><div class="est-mes-sem-meta">Meta: 80 questões FCC · 24h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S8 (22–31/out)</div><div class="est-mes-sem-foco">COBIT cascata + 40 objetivos + BD SQL avançado</div><div class="est-mes-sem-meta">Meta: 100 questões FCC + simulado 70q · 26h</div></div>
+      </div>
+    </div>
+
+    <div class="est-mes-bloco">
+      <div class="est-mes-hdr" id="emsh_nov" onclick="toggleEstMes('nov')">
+        <div style="width:10px;height:10px;border-radius:50%;background:#a855f7;flex-shrink:0;"></div>
+        <div style="flex:1;font-size:13px;font-weight:600;">Novembro — Gaps e consolidação</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);">~88 horas</div>
+        <div class="est-mes-chev">›</div>
+      </div>
+      <div class="est-mes-body" id="emsb_nov">
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S9 (01–07/nov)</div><div class="est-mes-sem-foco">ISO 27002 Controles + IA Generativa + LLMs</div><div class="est-mes-sem-meta">Meta: 80 questões FCC · 22h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S10 (08–14/nov)</div><div class="est-mes-sem-foco">UML + CMMI + Testes de Software + Scrum revisão</div><div class="est-mes-sem-meta">Meta: 80 questões FCC · 22h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S11 (15–21/nov)</div><div class="est-mes-sem-foco">POO + APIs REST + Padrões GOF + Zero Trust</div><div class="est-mes-sem-meta">Meta: 80 questões FCC · 22h</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">S12 (22–30/nov)</div><div class="est-mes-sem-foco">Revisão geral + Inglês técnico + Simulado completo</div><div class="est-mes-sem-meta">Meta: 100 questões + simulado 70q + estudo de caso · 24h</div></div>
+      </div>
+    </div>
+
+    <div class="est-mes-bloco">
+      <div class="est-mes-hdr" id="emsh_dez" onclick="toggleEstMes('dez')">
+        <div style="width:10px;height:10px;border-radius:50%;background:#3d7eff;flex-shrink:0;"></div>
+        <div style="flex:1;font-size:13px;font-weight:600;">Dezembro/Janeiro — Só simulados</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);">~80 horas</div>
+        <div class="est-mes-chev">›</div>
+      </div>
+      <div class="est-mes-body" id="emsb_dez">
+        <div class="est-mes-semana"><div class="est-mes-sem-label">Regra de ouro</div><div class="est-mes-sem-foco">ZERO conteúdo novo — só revisão e simulados</div><div class="est-mes-sem-meta">2 simulados completos 4h30 por semana + estudo de caso todo sábado</div></div>
+        <div class="est-mes-semana"><div class="est-mes-sem-label">Revisão focada</div><div class="est-mes-sem-foco">Apenas os temas com aproveitamento abaixo de 65% nos simulados</div><div class="est-mes-sem-meta">Não revise o que já sabe — gaste tempo no que ainda erra</div></div>
+      </div>
+    </div>
+
+    <div style="background:var(--sf2);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;margin-top:10px;">
+      <div style="font-size:11px;font-weight:700;color:var(--accent2);margin-bottom:8px;">TOTAL DE HORAS E QUESTÕES</div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:12px;"><span style="color:var(--muted);">Total de horas</span><span style="color:var(--text);font-weight:600;">~354 horas</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:12px;"><span style="color:var(--muted);">Total de questões FCC</span><span style="color:var(--text);font-weight:600;">2.000+ questões</span></div>
+      <div style="display:flex;justify-content:space-between;padding:4px 0;font-size:12px;"><span style="color:var(--muted);">354h bem direcionadas superam</span><span style="color:var(--accent2);font-weight:600;">500h dispersas</span></div>
+    </div>
+  </div>
+
+  <!-- PADRÕES FCC -->
+  <div class="card">
+    <div class="ctitle">🔍 5 padrões de questão FCC — reconheça antes da prova</div>
+
+    <div class="est-padrao">
+      <div class="est-padrao-titulo">Padrão 1 — Completar a lacuna</div>
+      <div class="est-padrao-ex">"O COBIT 2019 define ___ domínios de gestão: APO, BAI, ___, MEA."</div>
+      <div class="est-padrao-resp">✓ Resposta: 4 domínios · DSS (Deliver, Service and Support)</div>
+    </div>
+
+    <div class="est-padrao">
+      <div class="est-padrao-titulo">Padrão 2 — Identificar a norma correta</div>
+      <div class="est-padrao-ex">"Qual norma trata especificamente de gestão de riscos de segurança da informação?"</div>
+      <div class="est-padrao-resp">✓ Resposta: ISO/IEC 27005 — não 27001 (SGSI) nem 27002 (controles)</div>
+    </div>
+
+    <div class="est-padrao">
+      <div class="est-padrao-titulo">Padrão 3 — Marcar a alternativa INCORRETA ⚠️</div>
+      <div class="est-padrao-ex">"Assinale a alternativa que apresenta uma afirmação INCORRETA sobre o ITIL v4."</div>
+      <div class="est-padrao-resp">✓ A FCC frequentemente pede o ERRADO. Leia o enunciado duas vezes antes de marcar.</div>
+    </div>
+
+    <div class="est-padrao">
+      <div class="est-padrao-titulo">Padrão 4 — Associar framework ao objetivo</div>
+      <div class="est-padrao-ex">"O ITIL 4 aborda a gestão de serviços de TI através do ___, que integra os componentes do sistema de valor."</div>
+      <div class="est-padrao-resp">✓ Resposta: SVS — Sistema de Valor de Serviço</div>
+    </div>
+
+    <div class="est-padrao">
+      <div class="est-padrao-titulo">Padrão 5 — Artigo de lei específico</div>
+      <div class="est-padrao-ex">"Conforme a LGPD, são considerados dados pessoais sensíveis, EXCETO:"</div>
+      <div class="est-padrao-resp">✓ Resposta: está no Art. 5, inciso II da LGPD. Decorar as definições do Art. 5 é obrigatório.</div>
+    </div>
+  </div>
+
+  <!-- 5 ERROS FATAIS -->
+  <div class="card">
+    <div class="ctitle">💀 5 erros que eliminam candidatos de TI na FCC</div>
+    <div class="est-erro-item">
+      <div class="est-erro-num">1</div>
+      <div class="est-erro-info"><div class="est-erro-title">Negligenciar Português</div><div class="est-erro-desc">10 questões de gerais. Quem acha que "sabe português" e não treina o padrão FCC erra 5–6 questões. A FCC tem estilo próprio — sem treino específico você perde pontos que não deveria perder.</div></div>
+    </div>
+    <div class="est-erro-item">
+      <div class="est-erro-num">2</div>
+      <div class="est-erro-info"><div class="est-erro-title">Deixar Legislação para o fim</div><div class="est-erro-desc">A Lei Orgânica precisa estar na cabeça em setembro. Em janeiro você já esqueceu. Legislação é o tipo de conteúdo que exige repetição semanal para fixar — não dá para estudar uma vez e esperar.</div></div>
+    </div>
+    <div class="est-erro-item">
+      <div class="est-erro-num">3</div>
+      <div class="est-erro-info"><div class="est-erro-title">Estudar teoria sem resolver questões</div><div class="est-erro-desc">1 hora de teoria sem questões não vale nada para a FCC. A banca tem padrão próprio — você pode saber o conteúdo e errar a questão por não conhecer como ela pergunta. Resolva 20 questões para cada hora de teoria.</div></div>
+    </div>
+    <div class="est-erro-item">
+      <div class="est-erro-num">4</div>
+      <div class="est-erro-info"><div class="est-erro-title">Não treinar o Estudo de Caso</div><div class="est-erro-desc">Vale 100 pontos e é eliminatório. Candidatos que sabem o conteúdo mas não treinaram escrever sob pressão de 50 minutos ficam em branco ou escrevem mal. Treinar todo sábado é inegociável.</div></div>
+    </div>
+    <div class="est-erro-item">
+      <div class="est-erro-num">5</div>
+      <div class="est-erro-info"><div class="est-erro-title">Aprender coisa nova em dezembro</div><div class="est-erro-desc">Em dezembro o cérebro precisa consolidar, não absorver. Quem aprende conteúdo novo no último mês esquece tudo até janeiro. Dezembro e janeiro são só simulados, revisão e estudo de caso.</div></div>
+    </div>
+
+  <!-- META FINAL -->
+  <div class="card" style="background:linear-gradient(135deg,#0d1e3a,#0f2040);border:1px solid #1e3a6a;">
+    <div class="ctitle" style="color:#60a5fa;">🏆 Meta para estar entre os 10 primeiros</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+      <div style="flex:1;min-width:120px;text-align:center;padding:12px;background:rgba(255,255,255,.04);border-radius:var(--rs);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--accent2);">20+</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">de 25 questões gerais</div>
+      </div>
+      <div style="flex:1;min-width:120px;text-align:center;padding:12px;background:rgba(255,255,255,.04);border-radius:var(--rs);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--accent2);">35+</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">de 45 questões TI</div>
+      </div>
+      <div style="flex:1;min-width:120px;text-align:center;padding:12px;background:rgba(255,255,255,.04);border-radius:var(--rs);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--accent2);">70+</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">pontos no estudo de caso</div>
+      </div>
+      <div style="flex:1;min-width:120px;text-align:center;padding:12px;background:rgba(255,255,255,.04);border-radius:var(--rs);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--accent2);">2.000+</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;">questões FCC resolvidas</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:#a0c4e8;line-height:1.7;text-align:center;">
+      <strong style="color:#fff;">354 horas bem direcionadas superam 600 horas dispersas.</strong><br>
+      Consistência diária + questões FCC + legislação toda semana + estudo de caso todo sábado.<br>
+      Esse é o caminho para os primeiros colocados.
+    </div>
+  </div>
+
+</div>
+<!-- ESTRATÉGIA -->
+
+<!-- CRONÔMETRO -->
+<div class="tmr-wrap">
+  <div class="tmr-panel" id="tmrPanel">
+    <div class="tmr-display" id="tmrDisplay">00:00:00</div>
+    <div class="tmr-btns">
+      <button class="tmr-btn tmr-start" id="tmrBtn" onclick="tmrToggle()">▶ Iniciar</button>
+      <button class="tmr-btn tmr-reset" onclick="tmrReset()">↺</button>
+    </div>
+    <div class="tmr-sessao" id="tmrSessao">Toque em Iniciar para começar</div>
+  </div>
+  <button class="tmr-fab" id="tmrFab" onclick="tmrOpenClose()">
+    <span class="tmr-fab-icon">⏱</span>
+    <span class="tmr-fab-time" id="tmrFabTime"></span>
+  </button>
+</div>
+
+</main>
+<script src="app.js"></script>
+
+</body>
+</html>
