@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bom dia, Vitória">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fde8ee'/%3E%3Ccircle cx='32' cy='34' r='12' fill='%23e27896'/%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Bom dia, Vitória</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: app de celular — cabeçalho curto, uma tela por aba, barra de navegação fixa embaixo */
+:root{
+  --bg:#ffffff; --surface:#ffffff; --surface-2:#fdf4f6; --soft:#fdf0f3;
+  --ink:#2b2226; --muted:#8c7a82; --line:#f2e4e8;
+  --accent:#e27896; --accent-soft:#fde8ee; --dawn:#f7b6c6;
+  --good:#e27896; --good-soft:#fde8ee; --ok:#4f9a76;
+  --display:"Lora", "Georgia", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --nav-h:64px;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:16px calc(var(--nav-h) + 28px + env(safe-area-inset-bottom, 0px))}
+.app{max-width:560px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);font-weight:700}
+
+.screen{display:flex;flex-direction:column;gap:14px}
+.screen-head{display:flex;flex-direction:column;gap:2px;padding:4px 2px 2px}
+.screen-head h2{font-size:1.7rem;font-family:var(--body);font-weight:700;letter-spacing:-.01em}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+
+/* HOJE — limpo: branco, rosa só em detalhes */
+.hello{display:flex;flex-direction:column;gap:6px;padding:8px 2px 4px}
+.hello .date{font-size:.82rem;color:var(--muted);text-transform:capitalize}
+.hello h1{font-family:var(--body);font-weight:700;font-size:1.95rem;line-height:1.15;letter-spacing:-.01em}
+.hello .pink{color:var(--accent)}
+.hello p{margin:0;color:var(--muted);font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.stats > div{display:flex;flex-direction:column;gap:2px;padding:14px 12px;min-width:0}
+.stats > div + div{border-left:1px solid var(--line)}
+.stats .v{font-size:1.6rem;font-weight:600;line-height:1.1;color:var(--ink)}
+.stats .l{font-size:.74rem;color:var(--muted);line-height:1.3}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.block-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.link{background:none;border:0;padding:0;color:var(--accent);font-weight:600;font-size:.84rem}
+.link:hover{text-decoration:underline}
+.quote{background:var(--soft)}
+.quote p{margin:0;font-size:1.08rem;line-height:1.45;color:var(--ink)}
+.quote .sig{font-size:.84rem;color:var(--muted)}
+.quote .sig::before{content:"— "}
+.btn{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:600;font-size:.85rem}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.focus h3{font-family:var(--body);font-weight:700;font-size:1.05rem;margin:0}
+.focus ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.focus li{display:flex;gap:10px;font-size:.93rem}
+.focus li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:.55em}
+.trap b{font-size:.98rem}
+.trap p{margin:0;font-size:.92rem;color:var(--muted)}
+.bar{position:relative;height:8px;border-radius:999px;background:var(--soft)}
+.bar .fill{height:100%;border-radius:999px;background:var(--accent);transition:width .4s}
+.bar .mark{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);left:70%;border-radius:2px}
+.meter .note{font-size:.84rem;color:var(--muted)}
+.links{display:flex;gap:14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.timer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.clock{font-size:2.2rem;font-weight:600;letter-spacing:.02em;color:var(--ink)}
+.study.running .clock{color:var(--accent)}
+.timer select,.addform input,.addform select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 10px;min-width:0;max-width:100%}
+.trow{display:flex;gap:8px;flex-wrap:wrap}
+.addform{display:flex;gap:8px;flex-wrap:wrap;align-items:end;background:var(--soft);border-radius:12px;padding:10px}
+.addform label{display:flex;flex-direction:column;gap:3px;font-size:.76rem;color:var(--muted);font-weight:600;flex:1 1 120px;min-width:0}
+.cheer{margin:0;background:var(--soft);border-radius:12px;padding:10px 12px;font-size:.92rem}
+.totals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border-top:1px solid var(--line);padding-top:10px}
+.totals div{display:flex;flex-direction:column;min-width:0}
+.totals .num{font-size:1.15rem;font-weight:600}
+.totals span:last-child{font-size:.74rem;color:var(--muted)}
+.week7{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;align-items:end;height:92px;padding-top:4px}
+.week7 .d{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;height:100%;min-width:0}
+.week7 .b{width:100%;max-width:26px;border-radius:6px 6px 2px 2px;background:var(--accent-soft);min-height:3px}
+.week7 .d.today .b{background:var(--accent)}
+.week7 .h{font-size:.66rem;color:var(--muted);font-family:var(--mono)}
+.week7 .w{font-size:.68rem;color:var(--muted)}
+.bysubj{display:flex;flex-wrap:wrap;gap:6px}
+.bysubj span{background:var(--soft);border-radius:999px;padding:3px 10px;font-size:.78rem}
+.bysubj b{font-family:var(--mono);font-weight:600;margin-left:4px}
+/* MATÉRIAS */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.subj{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;text-align:left;display:flex;flex-direction:column;gap:10px;min-width:0}
+.subj:hover{border-color:var(--accent)}
+.subj .q{font-family:var(--mono);font-size:1.7rem;font-weight:600;line-height:1}
+.subj .q small{font-family:var(--body);font-size:.72rem;color:var(--muted);font-weight:600;margin-left:4px}
+.subj .n{font-weight:700;line-height:1.25}
+.subj .mini{height:5px;border-radius:5px;background:var(--surface-2);overflow:hidden}
+.subj .mini i{display:block;height:100%;background:var(--good)}
+.subj .p{font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between}
+.subj.wide{grid-column:1 / -1}
+
+.back{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:4px 0;color:var(--muted);font-weight:600}
+.dhead h2{font-family:var(--body);font-weight:700;letter-spacing:-.01em}
+.dhead{display:flex;justify-content:space-between;align-items:end;gap:12px}
+.dhead .q{font-family:var(--mono);font-size:2rem;font-weight:600;line-height:1;text-align:right}
+.dhead .q small{display:block;font-family:var(--body);font-size:.7rem;color:var(--muted);font-weight:700;letter-spacing:.08em}
+.tip{background:var(--surface-2);border-radius:14px;padding:12px 14px;font-size:.9rem}
+.tip b{color:var(--accent)}
+.topics{display:flex;flex-direction:column}
+.topic{display:grid;grid-template-columns:24px minmax(0,1fr) 54px;gap:10px;align-items:start;padding:12px 2px;border-top:1px solid var(--line)}
+.topic:first-child{border-top:0}
+.topic input{width:20px;height:20px;accent-color:var(--good);margin:2px 0 0}
+.topic label{cursor:pointer;min-width:0;font-weight:500}
+.topic .note{display:block;font-size:.8rem;color:var(--muted);font-weight:400}
+.topic.done label{color:var(--muted);text-decoration:line-through}
+.tag{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:1px 6px;margin-top:4px}
+.tag.max{background:var(--accent);color:#fff}
+.tag.alta{background:var(--accent-soft);color:var(--accent)}
+.tag.media{background:var(--surface-2);color:var(--muted)}
+.inc{text-align:right}
+.inc .n{font-family:var(--mono);font-weight:600;font-size:1rem}
+.inc .u{display:block;font-size:.66rem;color:var(--muted)}
+.legend{font-size:.8rem;color:var(--muted)}
+
+/* PLANO */
+.weeks{display:flex;flex-direction:column;gap:10px}
+.week{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.week.now{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.week.past{opacity:.55}
+.week .wh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.week .wh b{font-size:1rem}
+.week ul{margin:0;padding-left:18px}
+.pill{display:inline-block;background:var(--accent);color:#fff;font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:2px 7px}
+.day ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+
+/* SIMULADOS */
+.simform{display:flex;gap:8px;flex-wrap:wrap;align-items:end}
+.simform label{display:flex;flex-direction:column;gap:3px;font-size:.78rem;color:var(--muted);font-weight:600;flex:1 1 140px;min-width:0}
+.simform input,.simform select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-width:0;width:100%}
+.chart{overflow-x:auto}
+.chart svg{display:block;width:100%;min-width:300px;height:auto}
+.empty{color:var(--muted);font-size:.9rem}
+.simlist{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;gap:6px;align-items:center;background:var(--surface-2);border-radius:999px;padding:3px 4px 3px 10px;font-size:.8rem}
+.chip button{border:0;background:transparent;color:var(--muted);padding:0 6px;font-size:1rem;line-height:1}
+.traps{display:flex;flex-direction:column;gap:8px}
+.traps .card{padding:12px 14px;font-size:.9rem}
+.traps .card b{display:block}
+
+/* NAV */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+  padding-left:max(8px, env(safe-area-inset-left, 0px));padding-right:max(8px, env(safe-area-inset-right, 0px))}
+nav.tabs .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--nav-h)}
+nav.tabs button{background:none;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:.72rem;font-weight:600;color:var(--muted)}
+nav.tabs button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-current="page"]{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<div class="app">
+
+  <!-- HOJE -->
+  <main class="screen" id="v-hoje">
+    <header class="hello">
+      <span class="date" id="today">hoje</span>
+      <h1>Bom dia, <span class="pink">Vitória</span></h1>
+      <p>Esse sonho é seu, e eu estou do seu lado em cada página até a aprovação.</p>
+    </header>
+
+    <div class="stats">
+      <div><span class="v num" id="days">--</span><span class="l">dias para a prova</span></div>
+      <div><span class="v num">56</span><span class="l">acertos para passar</span></div>
+      <div><span class="v num" id="covPct">0%</span><span class="l">temas dominados</span></div>
+    </div>
+
+    <section class="block study">
+      <div class="block-h"><span class="label">Horas de estudo</span><button class="link" id="stAddToggle" type="button">Lançar manualmente</button></div>
+      <div class="timer">
+        <span class="clock num" id="clock">00:00:00</span>
+        <label class="sr" for="stSubj">Matéria</label>
+        <select id="stSubj"></select>
+      </div>
+      <div class="trow">
+        <button class="btn primary" id="stStart" type="button">Começar</button>
+        <button class="btn" id="stStop" type="button" hidden>Encerrar e salvar</button>
+      </div>
+      <form class="addform" id="stAdd" hidden>
+        <label for="stMin">Minutos<input id="stMin" type="number" min="5" max="720" step="5" inputmode="numeric" placeholder="60" required></label>
+        <label for="stAddSubj">Matéria<select id="stAddSubj"></select></label>
+        <button class="btn" type="submit">Adicionar</button>
+      </form>
+      <p class="cheer" id="cheer" hidden></p>
+      <div class="totals">
+        <div><span class="num" id="tToday">0h</span><span>hoje</span></div>
+        <div><span class="num" id="tWeek">0h</span><span>últimos 7 dias</span></div>
+        <div><span class="num" id="tAll">0h</span><span>desde o início</span></div>
+      </div>
+      <div class="week7" id="week7" aria-label="Horas por dia nos últimos 7 dias"></div>
+      <div class="bysubj" id="bySubj"></div>
+    </section>
+
+    <section class="block quote">
+      <div class="block-h"><span class="label">Recado do dia</span><span class="links"><button class="link" id="funnyPhrase" type="button">Me faz rir</button><button class="link" id="nextPhrase" type="button">Outra</button></span></div>
+      <p id="phrase"></p>
+      <span class="sig">Marlon</span>
+    </section>
+
+    <section class="block focus">
+      <div class="block-h"><span class="label" id="focusWeek">Esta semana</span><button class="link" type="button" data-go="plano">Ver plano</button></div>
+      <h3 id="focusTitle"></h3>
+      <ul id="focusList"></ul>
+    </section>
+
+    <section class="block meter">
+      <div class="block-h"><span class="label">Progresso até a meta</span><button class="link" type="button" data-go="materias">Marcar temas</button></div>
+      <div class="bar"><div class="fill" id="covFill" style="width:0%"></div><div class="mark" title="70%"></div></div>
+      <div class="note" id="covNote"></div>
+    </section>
+
+    <section class="block trap">
+      <div class="block-h"><span class="label">Pegadinha do dia</span></div>
+      <b id="trapT"></b>
+      <p id="trapD"></p>
+    </section>
+  </main>
+
+  <!-- MATÉRIAS -->
+  <main class="screen" id="v-materias" hidden>
+    <div class="screen-head">
+      <span class="label">O que mais cai</span>
+      <h2>Matérias</h2>
+      <span class="muted" style="font-size:.9rem">Toque numa matéria para ver os temas em ordem de cobrança.</span>
+    </div>
+    <div class="grid" id="subjGrid"></div>
+  </main>
+
+  <!-- DETALHE DA MATÉRIA -->
+  <main class="screen" id="v-detalhe" hidden>
+    <button class="back" type="button" data-go="materias">← Matérias</button>
+    <div class="dhead">
+      <div><span class="label" id="dSrc"></span><h2 id="dName"></h2></div>
+      <div class="q" id="dQ"></div>
+    </div>
+    <div class="tip" id="dTip"></div>
+    <div class="card"><div class="topics" id="dTopics"></div></div>
+    <div class="legend" id="dLegend"></div>
+  </main>
+
+  <!-- PLANO -->
+  <main class="screen" id="v-plano" hidden>
+    <div class="screen-head">
+      <span class="label">Até 29/11</span>
+      <h2>Plano</h2>
+    </div>
+    <div class="weeks" id="weeks"></div>
+    <div class="card day">
+      <div class="label" style="margin-bottom:8px">Dia de estudo padrão</div>
+      <ol>
+        <li>Matéria grande: ler a lei do tema e resolver 20 a 30 questões FGV dele.</li>
+        <li>Outra matéria grande, no mesmo formato, com menos questões.</li>
+        <li>Matéria menor: 45 minutos, em sessão separada.</li>
+        <li>15 minutos no caderno de erros, com o artigo ou a tese certa.</li>
+      </ol>
+    </div>
+  </main>
+
+  <!-- SIMULADOS -->
+  <main class="screen" id="v-simulados" hidden>
+    <div class="screen-head">
+      <span class="label">Provas antigas</span>
+      <h2>Simulados</h2>
+      <span class="muted" style="font-size:.9rem">5 horas, das 13h às 18h, sem consulta. Depois anote os acertos aqui.</span>
+    </div>
+    <div class="card">
+      <form class="simform" id="simForm">
+        <label for="simName">Prova
+          <select id="simName">
+            <option>ENAM V (2026.1)</option><option>ENAM IV (2025.2)</option><option>ENAM III (2025.1)</option>
+            <option>ENAM II (2024.2)</option><option>ENAM I (2024.1)</option><option>Simulado de curso</option>
+          </select>
+        </label>
+        <label for="simScore" style="flex:0 1 100px">Acertos
+          <input id="simScore" type="number" min="0" max="80" inputmode="numeric" placeholder="0–80" required>
+        </label>
+        <button class="btn primary" type="submit">Registrar</button>
+      </form>
+    </div>
+    <div class="card chart" id="chart"></div>
+    <div class="simlist" id="simList"></div>
+    <div class="label" style="margin-top:6px">Pegadinhas para reler antes do simulado</div>
+    <div class="traps" id="traps"></div>
+  </main>
+</div>
+
+<nav class="tabs" aria-label="Seções">
+  <div class="in">
+    <button type="button" data-tab="hoje"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Hoje</button>
+    <button type="button" data-tab="materias"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7M8 11h7"/></svg>Matérias</button>
+    <button type="button" data-tab="plano"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Plano</button>
+    <button type="button" data-tab="simulados"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Simulados</button>
+  </div>
+</nav>
+
+<script>
+(function(){
+  var EXAM = new Date('2026-11-29T13:00:00-03:00');
+  var store = {
+    get: function(k, d){ try{ var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+    set: function(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  };
+  var now = new Date();
+  var todayStr = new Date(now.getTime() - 3*3600000).toISOString().slice(0,10);
+  var dayIdx = Math.floor((Date.now() - new Date('2026-01-01').getTime()) / 86400000);
+
+  var PHRASES = [
+    "Bom dia, futura juíza. O café está pronto e o artigo 95 também.",
+    "Cada questão que você erra hoje é uma que a FGV não vai conseguir te pegar no dia 29.",
+    "Você não precisa gabaritar. Precisa de 56. E você tem muito mais que isso aí dentro.",
+    "Se o CPC fosse fácil, qualquer um era juiz. Por isso a vaga tem o seu nome.",
+    "Hoje vale mais uma hora de lei seca do que três de dúvida.",
+    "Litisconsórcio unitário não é sempre necessário. Já eu, por você, sou sempre necessário.",
+    "Quando cansar, lembra: Excelentíssima Doutora Vitória Fernandes. Soa bem, né?",
+    "A FGV tenta te confundir. Você só precisa desconfiar das palavras 'de ofício' e 'sempre'.",
+    "Respira. O sonho é seu, e eu vou estar na primeira fila quando você vestir a toga.",
+    "Constância ganha de intensidade. Um bloco por vez, todo dia.",
+    "Peculato culposo tem saída pelo ressarcimento. Desistir, não tem. Então segue.",
+    "Eu cuido do jantar, você cuida do controle de constitucionalidade. Combinado?",
+    "Errou o simulado? Ótimo. O caderno de erros agradece e a aprovação também.",
+    "Você já estudou mais do que a maioria que vai sentar naquela sala.",
+    "Judiciário caiu 18 vezes nas provas passadas. A banca adora, você vai dominar.",
+    "Pausa de 10 minutos é estratégia, não é preguiça. Bebe água.",
+    "Se alguém disser que é impossível, manda esperar o resultado preliminar.",
+    "Tutela de evidência dispensa perigo de dano. Meu orgulho de você também dispensa motivo.",
+    "Estou torcendo tanto que já decorei o art. 103-B sem querer.",
+    "Não é sobre o dia de hoje ser perfeito. É sobre ele acontecer.",
+    "A Corte IDH tem casos difíceis. Você tem eu e um café. Vantagem nossa.",
+    "Quando a cabeça pesar, lê só a lei. A lei não discute com você.",
+    "Daqui a pouco esse esforço vira posse. E a gente vai comemorar muito.",
+    "Concurso formal impróprio soma as penas. Nosso amor também só soma.",
+    "Você não está atrasada. Está exatamente no ponto da reta final.",
+    "Pode reclamar do Kelsen à vontade, mas não larga ele até dezembro.",
+    "Hoje, faça só o próximo bloco. Depois a gente vê o resto.",
+    "Lembra do porquê. Ele continua lá, esperando por você.",
+    "Toda juíza um dia ficou com raiva de prescrição e decadência. Faz parte.",
+    "Sonho grande dá trabalho grande. Você aguenta, e eu tô junto."
+  ];
+
+  var FUNNY = [
+    "O Código Civil tem mais de 2 mil artigos. Você só precisa dos que caem. Os outros podem esperar a posse.",
+    "Se o sono bater, lembra: juíza também dorme. Só que depois do ENAM.",
+    "A norma fundamental desta casa é simples: Vitória estuda, Marlon faz o café.",
+    "Matéria chata hoje? Ótimo. A FGV vai achar que você nem sofreu.",
+    "Prescrição é a perda da pretensão pelo decurso do tempo. Não deixa a sua prescrever no sofá.",
+    "Litisconsórcio necessário: você, o café e o Vade Mecum. Faltou um, a relação não se forma.",
+    "A tutela de urgência exige perigo de dano. O seu perigo é o lanche esfriar. Eu resolvo.",
+    "Hart tinha regras primárias e secundárias. Eu tenho uma só: não deixar você desistir.",
+    "Tecnicamente, levantar do sofá pra estudar é desistência voluntária do sofá. Você não responde pelos atos anteriores.",
+    "Hoje é dia de lei seca. Bem seca. Então bebe água.",
+    "A FGV tem pegadinha. A gente tem caderno de erros. Empate técnico, vantagem nossa.",
+    "Bloco de 50 minutos, pausa de 10. Passou disso, eu apareço com um biscoito pra fiscalizar.",
+    "Direitos Humanos garantem dignidade. Inclusive a de estudar de pijama.",
+    "Responsabilidade objetiva independe de culpa. Igual a minha de mandar mensagem perguntando se você comeu.",
+    "Isso não é procrastinação, é saneamento do processo. Agora volta pro art. 357.",
+    "Se o artigo for longo demais, lê com voz de narrador de documentário. Vira suspense.",
+    "Daqui a uns anos alguém vai te chamar de Excelência e você vai lembrar desta tarde chata. Vai valer.",
+    "Empresarial dá sono? Normal. Até a recuperação judicial precisou de um plano pra acordar.",
+    "Kelsen montou uma pirâmide de normas. Você só precisa montar uma pilha de questões resolvidas.",
+    "Se errar a questão, culpa o enunciado. Depois anota no caderno de erros, que aí a culpa é da FGV mesmo."
+  ];
+  var SUBJ = [
+    {id:'const', name:'Constitucional', q:16, src:'Mais jurisprudência do STF',
+     tip:'<b>Foco:</b> Judiciário é o tema nº 1 da prova inteira. Arts. 92 a 135 da CF e as teses do STF em controle.',
+     t:[['Poder Judiciário, magistratura, CNJ e funções essenciais',18,'arts. 92–135; art. 95, art. 94, art. 103-B'],
+        ['Controle de constitucionalidade',13,'ADI/ADC/ADPF/ADO, art. 103, modulação, SV 10'],
+        ['Tributário na CF e ordem econômica',13,'arts. 150–152 e 157–162'],
+        ['Acesso à justiça, devido processo, prova ilícita e prisão',13,'garantias do art. 5º'],
+        ['Direitos sociais',10,'saúde, mínimo existencial, Temas 500 e 1234'],
+        ['Organização do Estado e competências',10,''],
+        ['Teoria geral dos direitos fundamentais',8,'eficácia horizontal, proporcionalidade'],
+        ['Poder Legislativo e cláusulas pétreas',6,'imunidades parlamentares, EC 35/2001'],
+        ['Poder Executivo',3,'']]},
+    {id:'dpc', name:'Processo Civil', q:12, src:'Quase só letra do CPC',
+     tip:'<b>Foco:</b> estude com o CPC aberto ao lado das questões. A pegadinha costuma ser uma palavra trocada no artigo.',
+     t:[['Sujeitos: litisconsórcio, intervenção de terceiros, MP, DP, IDPJ, amicus curiae',11,'arts. 114, 116, 133'],
+        ['Petição inicial, resposta do réu e saneamento',8,'arts. 330, 357, 358'],
+        ['Tutela coletiva e processos estruturais',6,'coisa julgada in utilibus'],
+        ['Execução de título extrajudicial',6,''],
+        ['Decisões judiciais e sentença',5,''],
+        ['Competência',5,''],
+        ['Poder Público em juízo: MS, ação popular, improbidade',5,''],
+        ['Tutela provisória',4,'art. 300 x art. 311',true],
+        ['Recursos em espécie',4,'REsp x RE',true],
+        ['Atos processuais e tecnologia no processo',3,'audiências remotas, CNJ',true],
+        ['Coisa julgada, provas, cumprimento de sentença, juizados',3,'',true]]},
+    {id:'civ', name:'Civil', q:12, src:'Cerca de 70% lei seca',
+     tip:'<b>Foco:</b> quatro blocos empatados no topo. LINDB e bens quase não caem.',
+     t:[['Negócio jurídico: vícios, nulidade, prescrição e decadência',13,'nulidade x anulabilidade'],
+        ['Contratos em geral',13,'boa-fé, função social, extinção'],
+        ['Contratos em espécie',13,'compra e venda, locação, doação, mandato, fiança'],
+        ['Família e sucessões',13,'regime de bens, união estável, sucessão'],
+        ['Posse, propriedade e direitos reais',10,'usucapião, laje'],
+        ['Obrigações',7,'mora, cessão de crédito'],
+        ['Pessoas naturais e jurídicas',6,'desconsideração, direitos da personalidade'],
+        ['Responsabilidade civil',6,''],
+        ['ECA, Estatuto da Juventude e do Idoso',4,'']]},
+    {id:'pen', name:'Penal', q:12, src:'Lei + doutrina na Parte Geral',
+     tip:'<b>Foco:</b> crimes em espécie dão mais de 4 questões por prova. Imputabilidade nunca caiu.',
+     t:[['Crimes em espécie + Leis 7.716, 12.288 e 13.869',22,'adm. pública, patrimônio, pessoa'],
+        ['Das penas: dosimetria e concurso de crimes',12,'formal próprio x impróprio'],
+        ['Norma penal: lei no tempo e no espaço',8,'Súmula 711'],
+        ['Iter criminis',7,'desistência x tentativa'],
+        ['Tipicidade objetiva e imputação objetiva',5,''],
+        ['Extinção da punibilidade',4,''],
+        ['Penal econômico, excludentes, efeitos da condenação',3,'']]},
+    {id:'adm', name:'Administrativo', q:10, src:'Lei + responsabilidade do Estado',
+     tip:'<b>Foco:</b> improbidade e licitações pela lei nova, responsabilidade do Estado pela jurisprudência.',
+     t:[['Improbidade (Lei 14.230/2021: só dolo)',3,'',true],
+        ['Licitações e contratos (Lei 14.133/2021)',3,'',true],
+        ['Responsabilidade civil do Estado',2,'detento, omissão, regressiva',true],
+        ['LINDB (Lei 13.655), atos, poder de polícia, intervenção na propriedade',2,'',true]]},
+    {id:'hum', name:'Humanística', q:6, src:'Resoluções do CNJ + doutrina',
+     tip:'<b>Foco:</b> Resoluções do CNJ caíram em praticamente todas as edições.',
+     t:[['Resoluções do CNJ: ética, perspectiva de gênero, Agenda 2030, tecnologia',3,'',true],
+        ['Kelsen, Hart e Dworkin',1,'',true],
+        ['AED, pragmatismo, antidiscriminação, direito digital e IA',1,'',true],
+        ['Sociologia: acesso à justiça, pluralismo',1,'',true]]},
+    {id:'dh', name:'Direitos Humanos', q:6, src:'Doutrina + Corte IDH',
+     tip:'<b>Foco:</b> diferença entre Comissão e Corte, e os casos contra o Brasil.',
+     t:[['Sistema interamericano e controle de convencionalidade',3,'',true],
+        ['Casos da Corte IDH contra o Brasil',1,'Gomes Lund, Ximenes Lopes',true],
+        ['Sistema global: DUDH, PIDCP, PIDESC, Conv. 169 OIT',1,'',true],
+        ['Gerações de direitos e indivisibilidade',1,'',true]]},
+    {id:'emp', name:'Empresarial', q:6, src:'Cerca de 66% lei seca',
+     tip:'<b>Foco:</b> a Lei 11.101 é a aposta mais segura.',
+     t:[['Recuperação judicial e falência',3,'Lei 11.101 + STJ',true],
+        ['Direito societário',1,'CC e Lei das S/A',true],
+        ['Títulos de crédito e contratos empresariais',1,'',true],
+        ['LGPD, SFN, Liberdade Econômica',1,'',true]]}
+  ];
+
+  var WEEKS = [
+    {s:'2026-10-20', e:'2026-10-26', n:'Semana 1', title:'Judiciário, controle e sujeitos do processo', items:['Constitucional: Judiciário e controle','Processo Civil: sujeitos e inicial/saneamento','Humanística: Resoluções do CNJ','Simulado diagnóstico: ENAM V (2026.1)']},
+    {s:'2026-10-27', e:'2026-11-02', n:'Semana 2', title:'Civil e Penal no núcleo', items:['Civil: negócio jurídico e contratos','Penal: crimes em espécie e penas','Direitos Humanos: sistema interamericano']},
+    {s:'2026-11-03', e:'2026-11-09', n:'Semana 3', title:'Constitucional parte 2 e Administrativo', items:['Constitucional: tributário, art. 5º, sociais, organização','Administrativo: improbidade, licitações, responsabilidade','Empresarial: recuperação e falência','Sábado: ENAM IV (2025.2)']},
+    {s:'2026-11-10', e:'2026-11-16', n:'Semana 4', title:'Fechando os blocos de alta', items:['Processo Civil: coletiva, execução, tutela, recursos','Civil: família, reais, obrigações · Penal: norma e iter','Humanística: filosofia e sociologia','Sábado: ENAM III (2025.1)']},
+    {s:'2026-11-17', e:'2026-11-23', n:'Semana 5', title:'Revisão pelos erros', items:['Caderno de erros, matéria por matéria','DH e Empresarial: revisão','Simulados: ENAM II e ENAM I']},
+    {s:'2026-11-24', e:'2026-11-29', n:'Reta final', title:'Lei seca e descanso', items:['Lei seca dos blocos máximos, súmulas, Resoluções do CNJ','Sem simulado. 28/11 é descanso','29/11: prova às 13h, portões fecham 12h30']}
+  ];
+
+  var TRAPS = [
+    ['Nulidade x anulabilidade','Nulo não convalesce e pode ser declarado de ofício. Anulável tem prazo decadencial e depende de provocação.'],
+    ['IDPJ nunca de ofício','Art. 133 do CPC: depende de pedido da parte ou do MP.'],
+    ['Urgência x evidência','A evidência (art. 311) dispensa perigo de dano. A urgência (art. 300) exige.'],
+    ['Formal próprio x impróprio','Próprio: exaspera de 1/6 à metade. Impróprio, com desígnios autônomos: soma as penas.'],
+    ['Efeito vinculante','Não vincula o próprio STF nem o Legislativo na função de legislar.'],
+    ['Desistência x tentativa','O critério é a voluntariedade, não a espontaneidade.'],
+    ['Peculato culposo','Ressarcir antes do trânsito em julgado extingue a punibilidade. No doloso, não.'],
+    ['Improbidade hoje','Depois da Lei 14.230/2021 só existe a modalidade dolosa.']
+  ];
+
+  /* ---------- HOJE ---------- */
+  document.getElementById('today').textContent = now.toLocaleDateString('pt-BR', {weekday:'long', day:'numeric', month:'long'});
+  document.getElementById('days').textContent = Math.max(0, Math.ceil((EXAM - now) / 86400000));
+  var pIdx = ((dayIdx % PHRASES.length) + PHRASES.length) % PHRASES.length;
+  var phraseEl = document.getElementById('phrase');
+  function showPhrase(){ phraseEl.textContent = PHRASES[pIdx]; }
+  showPhrase();
+  document.getElementById('nextPhrase').addEventListener('click', function(){ pIdx = (pIdx + 1) % PHRASES.length; showPhrase(); });
+  var fIdx = ((dayIdx % 20) + 20) % 20;
+  document.getElementById('funnyPhrase').addEventListener('click', function(){ fIdx = (fIdx + 1) % FUNNY.length; phraseEl.textContent = FUNNY[fIdx]; });
+
+  var cur = WEEKS.filter(function(w){ return todayStr >= w.s && todayStr <= w.e; })[0] || (todayStr < WEEKS[0].s ? WEEKS[0] : WEEKS[WEEKS.length-1]);
+  document.getElementById('focusWeek').textContent = cur.n + ' · foco';
+  document.getElementById('focusTitle').textContent = cur.title;
+  document.getElementById('focusList').innerHTML = cur.items.map(function(i){ return '<li>'+i+'</li>'; }).join('');
+  var tr = TRAPS[((dayIdx % TRAPS.length) + TRAPS.length) % TRAPS.length];
+  document.getElementById('trapT').textContent = tr[0];
+  document.getElementById('trapD').textContent = tr[1];
+
+  /* ---------- PROGRESSO ---------- */
+  var checked = store.get('bdv-checked', {});
+  function subjPct(s){
+    var sum = 0, got = 0;
+    s.t.forEach(function(t, ti){ sum += t[1]; if(checked[s.id+'-'+ti]) got += t[1]; });
+    return sum ? got/sum : 0;
+  }
+  function updateCoverage(){
+    var cov = 0, tot = 0;
+    SUBJ.forEach(function(s){ cov += subjPct(s) * s.q; tot += s.q; });
+    var gp = cov/tot, q = Math.round(cov);
+    document.getElementById('covPct').textContent = Math.round(gp*100)+'%';
+    document.getElementById('covFill').style.width = (gp*100).toFixed(1)+'%';
+    document.getElementById('covNote').textContent = gp >= .7
+      ? 'Os temas marcados cobrem cerca de '+q+' das 80 questões. Agora é manter com revisão e simulado.'
+      : 'Os temas marcados cobrem cerca de '+q+' das 80 questões. A linha preta é a meta de 70%. Marque os temas na aba Matérias.';
+  }
+
+  /* ---------- MATÉRIAS ---------- */
+  var grid = document.getElementById('subjGrid');
+  function renderGrid(){
+    grid.innerHTML = SUBJ.map(function(s, i){
+      var p = Math.round(subjPct(s)*100);
+      return '<button type="button" class="subj'+(i===0?' wide':'')+'" data-subj="'+s.id+'">'+
+        '<span class="q">'+s.q+'<small>questões</small></span>'+
+        '<span class="n">'+s.name+'</span>'+
+        '<span class="mini"><i style="width:'+p+'%"></i></span>'+
+        '<span class="p"><span>'+s.t.length+' temas</span><span class="num">'+p+'%</span></span></button>';
+    }).join('');
+  }
+  grid.addEventListener('click', function(e){
+    var b = e.target.closest('[data-subj]'); if(b) openSubject(b.dataset.subj);
+  });
+
+  function prio(n, est){ if(est) return n>=3?'alta':'media'; return n>=13?'max':(n>=6?'alta':'media'); }
+  var prioLabel = {max:'Prioridade máxima', alta:'Alta', media:'Média'};
+  var curSubj = null;
+  function openSubject(id){
+    var s = SUBJ.filter(function(x){return x.id===id;})[0]; if(!s) return;
+    curSubj = s;
+    document.getElementById('dSrc').textContent = s.src;
+    document.getElementById('dName').textContent = s.name;
+    document.getElementById('dQ').innerHTML = s.q + '<small>QUESTÕES</small>';
+    document.getElementById('dTip').innerHTML = s.tip;
+    var anyEst = s.t.some(function(t){return t[3];});
+    document.getElementById('dTopics').innerHTML = s.t.map(function(t, ti){
+      var key = s.id+'-'+ti, p = prio(t[1], t[3]);
+      return '<div class="topic'+(checked[key]?' done':'')+'">'+
+        '<input type="checkbox" id="'+key+'"'+(checked[key]?' checked':'')+'>'+
+        '<label for="'+key+'">'+t[0]+(t[2]?'<span class="note">'+t[2]+'</span>':'')+'<span class="tag '+p+'">'+prioLabel[p]+'</span></label>'+
+        '<div class="inc">'+(t[3]?'<span class="n">~</span><span class="u">estimado</span>':'<span class="n">'+t[1]+'</span><span class="u">questões</span>')+'</div></div>';
+    }).join('');
+    document.getElementById('dLegend').textContent = anyEst
+      ? 'Números = questões que caíram nas edições I a V. "~" = tema recorrente sem contagem publicada.'
+      : 'Números = questões que caíram nas edições I a V do ENAM.';
+    show('detalhe');
+    window.scrollTo(0,0);
+  }
+  document.getElementById('dTopics').addEventListener('change', function(e){
+    if(e.target.type !== 'checkbox') return;
+    if(e.target.checked) checked[e.target.id] = true; else delete checked[e.target.id];
+    e.target.closest('.topic').classList.toggle('done', e.target.checked);
+    store.set('bdv-checked', checked);
+    updateCoverage(); renderGrid();
+  });
+
+  /* ---------- PLANO ---------- */
+  var fmt = function(x){ return x.slice(8,10)+'/'+x.slice(5,7); };
+  document.getElementById('weeks').innerHTML = WEEKS.map(function(w){
+    var isNow = w === cur, past = todayStr > w.e;
+    return '<div class="week'+(isNow?' now':(past?' past':''))+'"><div class="wh"><b>'+w.n+' · <span class="num muted" style="font-weight:500">'+fmt(w.s)+'–'+fmt(w.e)+'</span></b>'+(isNow?'<span class="pill">Agora</span>':'')+'</div>'+
+      '<ul>'+w.items.map(function(i){return '<li>'+i+'</li>';}).join('')+'</ul></div>';
+  }).join('');
+
+  /* ---------- SIMULADOS ---------- */
+  document.getElementById('traps').innerHTML = TRAPS.map(function(t){ return '<div class="card"><b>'+t[0]+'</b>'+t[1]+'</div>'; }).join('');
+  var sims = store.get('bdv-sims', []);
+  document.getElementById('simForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = parseInt(document.getElementById('simScore').value, 10);
+    if(isNaN(v) || v < 0 || v > 80) return;
+    sims.push({n: document.getElementById('simName').value, v: v, d: todayStr});
+    store.set('bdv-sims', sims);
+    document.getElementById('simScore').value = '';
+    renderSims();
+  });
+  document.getElementById('simList').addEventListener('click', function(e){
+    var b = e.target.closest('button[data-i]'); if(!b) return;
+    sims.splice(+b.dataset.i, 1); store.set('bdv-sims', sims); renderSims();
+  });
+  function renderSims(){
+    var c = document.getElementById('chart'), list = document.getElementById('simList');
+    if(!sims.length){
+      c.innerHTML = '<div class="empty">Nenhum simulado registrado. Comece pelo ENAM V completo, em 5 horas.</div>';
+      list.innerHTML = ''; return;
+    }
+    var W = 520, H = 210, L = 30, R = 10, T = 18, B = 30;
+    var step = (W-L-R)/sims.length, bw = Math.min(48, step*0.6);
+    var y = function(v){ return T + (1 - v/80) * (H-T-B); };
+    var s = '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Acertos por simulado comparados à meta de 56">';
+    [0,20,40,60,80].forEach(function(g){ s += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(g)+'" y2="'+y(g)+'" stroke="var(--line)"/><text x="'+(L-6)+'" y="'+(y(g)+4)+'" text-anchor="end" font-size="10" fill="var(--muted)">'+g+'</text>'; });
+    sims.forEach(function(r, i){
+      var x = L + step*i + (step-bw)/2, ok = r.v >= 56;
+      s += '<rect x="'+x+'" y="'+y(r.v)+'" width="'+bw+'" height="'+(y(0)-y(r.v))+'" rx="5" fill="'+(ok?'var(--ok)':'var(--accent)')+'" fill-opacity="'+(ok?1:.75)+'"><title>'+r.n+': '+r.v+' acertos</title></rect>';
+      s += '<text x="'+(x+bw/2)+'" y="'+(y(r.v)-6)+'" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">'+r.v+'</text>';
+      s += '<text x="'+(x+bw/2)+'" y="'+(H-10)+'" text-anchor="middle" font-size="10" fill="var(--muted)">'+r.n.replace(/ \(.*\)/,'').replace('Simulado de curso','Curso')+'</text>';
+    });
+    s += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(56)+'" y2="'+y(56)+'" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 4"/>';
+    s += '<text x="'+(W-R)+'" y="'+(y(56)-6)+'" text-anchor="end" font-size="11" font-weight="600" fill="var(--ink)">meta 56</text></svg>';
+    c.innerHTML = s;
+    list.innerHTML = sims.map(function(r,i){ return '<span class="chip">'+r.n+' · <span class="num">'+r.v+'</span><button type="button" data-i="'+i+'" aria-label="Remover '+r.n+'">×</button></span>'; }).join('');
+  }
+
+
+  /* ---------- HORAS DE ESTUDO ---------- */
+  var sessions = store.get('bdv-hours', []);
+  var tm = store.get('bdv-timer', {running:false, startedAt:null, acc:0, subj:SUBJ[0].name});
+  var opts = SUBJ.map(function(x){ return '<option>'+x.name+'</option>'; }).join('') + '<option>Simulado</option><option>Revisão geral</option>';
+  var selT = document.getElementById('stSubj'), selA = document.getElementById('stAddSubj');
+  selT.innerHTML = opts; selA.innerHTML = opts; selT.value = tm.subj;
+  var studyEl = document.querySelector('.study'), clock = document.getElementById('clock');
+  var bStart = document.getElementById('stStart'), bStop = document.getElementById('stStop'), cheer = document.getElementById('cheer');
+  function elapsed(){ return tm.acc + (tm.running ? Date.now() - tm.startedAt : 0); }
+  function pad(n){ return (n<10?'0':'')+n; }
+  function tick(){
+    var t = Math.floor(elapsed()/1000);
+    clock.textContent = pad(Math.floor(t/3600))+':'+pad(Math.floor(t%3600/60))+':'+pad(t%60);
+  }
+  function syncButtons(){
+    studyEl.classList.toggle('running', tm.running);
+    bStart.textContent = tm.running ? 'Pausar' : (tm.acc ? 'Continuar' : 'Começar');
+    bStop.hidden = !(tm.running || tm.acc);
+  }
+  bStart.addEventListener('click', function(){
+    if(tm.running){ tm.acc += Date.now() - tm.startedAt; tm.running = false; tm.startedAt = null; }
+    else { tm.running = true; tm.startedAt = Date.now(); tm.subj = selT.value; cheer.hidden = true; }
+    store.set('bdv-timer', tm); syncButtons(); tick();
+  });
+  selT.addEventListener('change', function(){ tm.subj = selT.value; store.set('bdv-timer', tm); });
+  bStop.addEventListener('click', function(){
+    var mins = Math.round(elapsed()/60000);
+    tm = {running:false, startedAt:null, acc:0, subj:selT.value}; store.set('bdv-timer', tm);
+    if(mins >= 1){ addSession(mins, selT.value); }
+    cheer.textContent = mins >= 1 ? fmtH(mins)+' de '+selT.value+' na conta. '+FUNNY[Math.floor(Math.random()*FUNNY.length)] : 'Sessão muito curta, não salvei. Bora mais um pouquinho?';
+    cheer.hidden = false;
+    syncButtons(); tick();
+  });
+  document.getElementById('stAddToggle').addEventListener('click', function(){ var f = document.getElementById('stAdd'); f.hidden = !f.hidden; });
+  document.getElementById('stAdd').addEventListener('submit', function(e){
+    e.preventDefault();
+    var m = parseInt(document.getElementById('stMin').value, 10);
+    if(isNaN(m) || m < 1) return;
+    addSession(m, selA.value);
+    document.getElementById('stMin').value = '';
+    this.hidden = true;
+    cheer.textContent = fmtH(m)+' de '+selA.value+' lançados.'; cheer.hidden = false;
+  });
+  function localDay(d){ return new Date(d.getTime() - 3*3600000).toISOString().slice(0,10); }
+  function addSession(m, subj){ sessions.push({d: localDay(new Date()), m: m, s: subj}); store.set('bdv-hours', sessions); renderHours(); }
+  function fmtH(m){ var h = Math.floor(m/60), r = m%60; return h ? (r ? h+'h'+pad(r) : h+'h') : r+'min'; }
+  function renderHours(){
+    var today = localDay(new Date()), days = [];
+    for(var i=6;i>=0;i--){ days.push(localDay(new Date(Date.now() - i*86400000))); }
+    var per = {}, bySubj = {}, all = 0;
+    sessions.forEach(function(x){ per[x.d] = (per[x.d]||0) + x.m; all += x.m; bySubj[x.s] = (bySubj[x.s]||0) + x.m; });
+    var week = days.reduce(function(a,d){ return a + (per[d]||0); }, 0);
+    document.getElementById('tToday').textContent = fmtH(per[today]||0);
+    document.getElementById('tWeek').textContent = fmtH(week);
+    document.getElementById('tAll').textContent = fmtH(all);
+    var max = Math.max(120, Math.max.apply(null, days.map(function(d){ return per[d]||0; })));
+    var wd = ['dom','seg','ter','qua','qui','sex','sáb'];
+    document.getElementById('week7').innerHTML = days.map(function(d){
+      var m = per[d]||0, h = Math.round(m/max*62);
+      var w = wd[new Date(d+'T12:00:00').getDay()];
+      return '<div class="d'+(d===today?' today':'')+'" title="'+d.slice(8)+'/'+d.slice(5,7)+': '+fmtH(m)+'"><span class="h">'+(m?fmtH(m):'')+'</span><span class="b" style="height:'+h+'px"></span><span class="w">'+w+'</span></div>';
+    }).join('');
+    var keys = Object.keys(bySubj).sort(function(a,b){ return bySubj[b]-bySubj[a]; });
+    document.getElementById('bySubj').innerHTML = keys.map(function(k){ return '<span>'+k+'<b>'+fmtH(bySubj[k])+'</b></span>'; }).join('');
+  }
+  syncButtons(); tick(); renderHours();
+  setInterval(function(){ if(tm.running) tick(); }, 1000);
+
+  /* ---------- NAVEGAÇÃO ---------- */
+  var VIEWS = ['hoje','materias','detalhe','plano','simulados'];
+  function show(v){
+    VIEWS.forEach(function(x){ document.getElementById('v-'+x).hidden = x !== v; });
+    var tab = v === 'detalhe' ? 'materias' : v;
+    document.querySelectorAll('nav.tabs button').forEach(function(b){
+      if(b.dataset.tab === tab) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current');
+    });
+  }
+  function go(v){ show(v); window.scrollTo(0,0); try{ history.replaceState(null,'','#'+v); }catch(e){} }
+  document.querySelector('nav.tabs').addEventListener('click', function(e){
+    var b = e.target.closest('[data-tab]'); if(b) go(b.dataset.tab);
+  });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-go]'); if(b) go(b.dataset.go);
+  });
+
+  renderGrid(); updateCoverage(); renderSims();
+  var start = (location.hash || '').slice(1);
+  show(['hoje','materias','plano','simulados'].indexOf(start) >= 0 ? start : 'hoje');
+})();
+</script>
+
+</body>
+</html>
