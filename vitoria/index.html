@@ -179,6 +179,11 @@ details.lvl ul{margin:0 0 10px;padding-left:40px;display:flex;flex-direction:col
   #v-estrategia:not([hidden]){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
   #v-estrategia .screen-head,#v-estrategia .block:first-of-type{grid-column:1 / -1}
 }
+.rsbtn{grid-column:2 / -1;justify-self:start;margin-top:-4px}
+.resumo{grid-column:1 / -1;background:var(--soft);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.resumo .rs ul{margin:4px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:.9rem}
+.resumo .rs:last-child .label{color:var(--accent)}
+@media (min-width:900px){.resumo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
 /* PLANO */
 .weeks{display:flex;flex-direction:column;gap:10px}
 .week{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
@@ -607,6 +612,176 @@ nav.tabs button{min-height:44px}
     "Kelsen montou uma pirâmide de normas. Você só precisa montar uma pilha de questões resolvidas.",
     "Se errar a questão, culpa o enunciado. Depois anota no caderno de erros, que aí a culpa é da FGV mesmo."
   ];
+  /* ---------- RESUMOS DOS TEMAS DE PRIORIDADE MÁXIMA ---------- */
+  var RES = {
+  'const-0': {
+    art:['Art. 92: órgãos do Judiciário. O CNJ é órgão do Judiciário, mas sem função jurisdicional.',
+         'Art. 93: Estatuto da Magistratura. Ingresso por concurso, com 3 anos de atividade jurídica.',
+         'Art. 94: quinto constitucional. MP e advogados com mais de 10 anos; lista sêxtupla da classe, tríplice do tribunal, escolha do Executivo em 20 dias.',
+         'Art. 95: vitaliciedade (no 1º grau, após 2 anos de exercício), inamovibilidade e irredutibilidade, mais as vedações do parágrafo único.',
+         'Art. 103-B: CNJ com 15 membros, mandato de 2 anos e uma recondução, presidido pelo Presidente do STF.',
+         'Arts. 127 a 135: MP, advocacia pública, advocacia e Defensoria.'],
+    fgv:['Competências originárias e recursais do STF (art. 102) e do STJ (art. 105).',
+         'Garantias x vedações dos juízes, inclusive a quarentena de 3 anos para advogar no juízo de onde saiu.',
+         'Remoção ou disponibilidade por interesse público: maioria absoluta do tribunal ou do CNJ.',
+         'Limites do CNJ: controle administrativo e financeiro, nunca de decisão judicial.'],
+    trap:['O CNJ não revê ato jurisdicional e não tem poder sobre o STF (ADI 3367).',
+          'Vitaliciedade no 1º grau só depois de 2 anos. No quinto, vem com a posse.',
+          'Juiz pode ter um cargo de magistério, nada além disso.']},
+  'const-1': {
+    art:['Art. 102, I, a: ADI e ADC. §1º: ADPF. §2º: eficácia contra todos e efeito vinculante.',
+         'Art. 103: os 9 legitimados. Mesa de Assembleia, Governador e confederação ou entidade de classe nacional precisam de pertinência temática.',
+         'Art. 103, §2º: ADO. Art. 97 e SV 10: reserva de plenário.',
+         'Art. 52, X: o Senado suspende a lei declarada inconstitucional no controle difuso.',
+         'Lei 9.868/99: modulação por 2/3 (art. 27), sem desistência (art. 5º), amicus curiae (art. 7º, §2º), irrecorrível salvo embargos (art. 26).',
+         'Lei 9.882/99: ADPF é subsidiária (art. 4º, §1º).'],
+    fgv:['Efeitos da decisão, modulação e legitimidade ativa, cada prova por um ângulo.',
+         'Técnicas de decisão: interpretação conforme x nulidade parcial sem redução de texto.',
+         'Controle difuso x concentrado e o papel do Senado.'],
+    trap:['O efeito vinculante não alcança o Legislativo na função de legislar nem o próprio STF.',
+          'Lei anterior à CF não é inconstitucional, é não recepcionada. O caminho é a ADPF, não a ADI.',
+          'Na ADI não cabe intervenção de terceiros nem ação rescisória.']},
+  'const-2': {
+    art:['Art. 150, I a III: legalidade, isonomia, irretroatividade, anterioridade anual e de 90 dias.',
+         'Art. 150, IV e V: não confisco e liberdade de tráfego.',
+         'Art. 150, VI: imunidades recíproca, de templos, de partidos, sindicatos de trabalhadores e entidades sem fins lucrativos, de livros e papel, de fonogramas brasileiros.',
+         'Art. 150, §2º: a imunidade recíproca se estende a autarquias e fundações públicas.',
+         'Arts. 157 a 162: repartição de receitas.',
+         'EC 132/2023 (reforma tributária): IBS, CBS e Imposto Seletivo. Confira a redação vigente dos artigos novos.'],
+    fgv:['Exceções às anterioridades, tema clássico em tabela.',
+         'Alcance das imunidades e as súmulas vinculantes que tratam delas.',
+         'Competência tributária de cada ente.'],
+    trap:['Imunidade só afasta impostos, não taxas nem contribuições.',
+          'IPI respeita os 90 dias mas não a anterioridade anual. IR é o contrário.',
+          'Livro eletrônico e leitores de e-book são imunes (SV 57). Imóvel de entidade imune alugado continua imune se a renda for aplicada na finalidade (SV 52).']},
+  'const-3': {
+    art:['Art. 5º, XXXV: inafastabilidade. LIV e LV: devido processo, contraditório e ampla defesa.',
+         'Art. 5º, LVI: provas ilícitas são inadmissíveis.',
+         'Art. 5º, LVII: presunção de inocência até o trânsito em julgado.',
+         'Art. 5º, LXI a LXVI: prisão só em flagrante ou por ordem escrita e fundamentada; comunicação imediata; direito ao silêncio; liberdade provisória.',
+         'Art. 5º, XI: casa é asilo inviolável. De dia, com ordem judicial; a qualquer hora, em flagrante, desastre ou socorro.',
+         'Art. 5º, LXVII e SV 25: prisão civil só do devedor de alimentos.'],
+    fgv:['Execução da pena: só após o trânsito (ADCs 43, 44 e 54), com a exceção da condenação pelo júri, que o STF admitiu executar de imediato.',
+         'Provas derivadas da ilícita e as exceções da fonte independente e da descoberta inevitável (CPP, art. 157).',
+         'SV 14: acesso do defensor aos elementos já documentados.'],
+    trap:['Depositário infiel não pode ser preso (SV 25).',
+          'Mandado judicial de busca domiciliar só de dia.',
+          'Razoável duração do processo (LXXVIII) é direito fundamental expresso.']},
+  'dpc-0': {
+    art:['Art. 114: litisconsórcio necessário. Art. 116: unitário. Art. 115: sem o necessário, a sentença é nula (se unitário) ou ineficaz para quem não foi citado.',
+         'Arts. 119 a 124: assistência simples e litisconsorcial.',
+         'Arts. 125 a 129: denunciação da lide, que não é obrigatória; só uma denunciação sucessiva.',
+         'Arts. 130 a 132: chamamento ao processo.',
+         'Arts. 133 a 137: IDPJ, inclusive a inversa, cabível em qualquer fase.',
+         'Art. 138: amicus curiae. Arts. 176 a 181 (MP) e 185 a 187 (Defensoria): prazo em dobro.'],
+    fgv:['Diferença entre litisconsórcio necessário e unitário.',
+         'Quando cabe cada intervenção de terceiro e quais são os efeitos.',
+         'O amicus curiae: quem pode ser, o que pode recorrer.'],
+    trap:['IDPJ nunca de ofício: depende de pedido da parte ou do MP (art. 133).',
+          'Se o IDPJ for pedido na inicial, o processo não se suspende.',
+          'Amicus curiae não muda a competência e só recorre por embargos de declaração e no IRDR.',
+          'Unitário pode ser facultativo.']},
+  'dpc-1': {
+    art:['Art. 319: requisitos da inicial. Art. 321: emenda em 15 dias.',
+         'Art. 330: indeferimento. Art. 331: na apelação, o juiz pode se retratar em 5 dias.',
+         'Art. 332: improcedência liminar, sem citação (contrariar súmula do STF ou STJ, repetitivo, IRDR ou IAC; prescrição ou decadência).',
+         'Art. 334: audiência de conciliação. Só não acontece se as duas partes recusarem.',
+         'Arts. 335 a 343: contestação em 15 dias, preliminares (art. 337) e reconvenção.',
+         'Arts. 355 a 357: julgamento antecipado total ou parcial e saneamento.'],
+    fgv:['Hipóteses de improcedência liminar x indeferimento da inicial.',
+         'Saneamento do art. 357: esclarecimentos em 5 dias, saneamento consensual e audiência de saneamento em casos complexos.',
+         'Efeitos da revelia e suas exceções (arts. 344 e 345).'],
+    trap:['Faltar sem justificativa à audiência do art. 334 é ato atentatório, com multa de até 2%.',
+          'Incompetência absoluta e relativa se alegam em preliminar de contestação. Não existe mais exceção de incompetência.',
+          'Julgamento antecipado parcial (art. 356) se impugna por agravo, não por apelação.']},
+  'civ-0': {
+    art:['Art. 104: requisitos de validade. Art. 166: nulidades. Art. 167: simulação é nula, mas o negócio dissimulado subsiste se válido.',
+         'Arts. 168 e 169: o nulo pode ser declarado de ofício e não convalesce.',
+         'Arts. 171, 172 e 177: o anulável admite confirmação e não se declara de ofício.',
+         'Art. 178: 4 anos para anular por vício. Art. 179: 2 anos quando a lei não fixar prazo.',
+         'Vícios: erro (138), dolo (145), coação (151), estado de perigo (156), lesão (157) e fraude contra credores (158).',
+         'Prescrição: geral de 10 anos (205); reparação civil em 3 anos (206, §3º).'],
+    fgv:['Nulidade x anulabilidade: quem alega, prazo e efeitos.',
+         'Estado de perigo x lesão.',
+         'Causas que impedem, suspendem e interrompem a prescrição; a interrupção só ocorre uma vez (art. 202).'],
+    trap:['Dolo acidental não anula, só gera perdas e danos (art. 146).',
+          'Na lesão não se exige dolo de aproveitamento. Não se anula se for oferecido suplemento suficiente.',
+          'Na coação, os 4 anos contam de quando ela cessa; nos demais vícios, da data do negócio.',
+          'Decadência legal se conhece de ofício; a convencional, não (arts. 210 e 211).']},
+  'civ-1': {
+    art:['Art. 421 e 421-A: função social, intervenção mínima e revisão excepcional (Lei 13.874/2019).',
+         'Art. 422: boa-fé objetiva. Art. 423: cláusula ambígua em contrato de adesão se interpreta a favor do aderente.',
+         'Arts. 427 a 435: formação. Entre ausentes, o contrato se forma quando a aceitação é expedida (art. 434).',
+         'Arts. 441 a 446: vícios redibitórios. Arts. 447 a 457: evicção.',
+         'Arts. 474 a 477: cláusula resolutiva, exceção do contrato não cumprido e exceção de inseguridade.',
+         'Arts. 478 a 480: onerosidade excessiva.'],
+    fgv:['Requisitos da resolução por onerosidade excessiva: fato extraordinário e imprevisível e extrema vantagem para a outra parte.',
+         'Prazos dos vícios redibitórios.',
+         'Figuras da boa-fé: supressio, surrectio, venire contra factum proprium e tu quoque.'],
+    trap:['Vício redibitório: 30 dias para móvel e 1 ano para imóvel, contados da entrega. Se o comprador já tinha a posse, os prazos caem pela metade.',
+          'No CDC basta o fato superveniente; no CC exige-se imprevisibilidade.',
+          'Cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação.']},
+  'civ-2': {
+    art:['Compra e venda: art. 496, venda de ascendente a descendente é anulável sem consentimento dos outros descendentes e do cônjuge.',
+         'Doação: art. 544, a de ascendente a descendente ou entre cônjuges adianta a legítima. Art. 548, a universal é nula. Art. 549, a inoficiosa é nula no excesso.',
+         'Arts. 555 a 564: revogação por ingratidão, com prazo de 1 ano (art. 559) e doações que não admitem revogação.',
+         'Fiança: arts. 818 a 839. Benefício de ordem (art. 827). Sem prazo, o fiador se exonera notificando e fica responsável por 60 dias.',
+         'Mandato: arts. 653 a 692. O mandato em causa própria é irrevogável (art. 685).',
+         'Transporte: arts. 730 a 756. A culpa de terceiro não exclui a responsabilidade do transportador (art. 735).'],
+    fgv:['Locação urbana pela Lei 8.245/91: garantias, denúncia e ação renovatória.',
+         'Doações nulas, anuláveis e revogáveis.',
+         'Fiança: interpretação restritiva e outorga do cônjuge.'],
+    trap:['Fiança sem outorga do cônjuge é totalmente ineficaz (Súmula 332 do STJ).',
+          'O bem de família do fiador de locação é penhorável (Súmula 549 do STJ).',
+          'Na locação, só uma modalidade de garantia por contrato (Lei 8.245, art. 37).',
+          'No transporte, cláusula que exclui responsabilidade é nula (art. 734).']},
+  'civ-3': {
+    art:['Arts. 1.521 e 1.523: impedimentos (casamento nulo) x causas suspensivas (separação obrigatória).',
+         'Art. 1.640: comunhão parcial é o regime supletivo. Art. 1.659: bens que ficam fora.',
+         'Arts. 1.647 e 1.649: atos que exigem outorga do cônjuge; sem ela, anulável em 2 anos.',
+         'Art. 1.723: união estável. Art. 1.725: comunhão parcial, salvo contrato escrito.',
+         'Art. 1.829: ordem da vocação hereditária e a concorrência do cônjuge com os descendentes.',
+         'Arts. 1.845 e 1.846: herdeiros necessários e legítima de metade. Indignidade (art. 1.814) x deserdação (art. 1.962).'],
+    fgv:['Concorrência do cônjuge: não concorre na comunhão universal, na separação obrigatória e na comunhão parcial sem bens particulares.',
+         'O companheiro tem os mesmos direitos sucessórios do cônjuge (STF, Tema 809).',
+         'Separação obrigatória dos maiores de 70 anos pode ser afastada por escritura pública (STF, Tema 1236).'],
+    trap:['Guarda compartilhada é a regra, mesmo sem acordo dos pais (art. 1.584, §2º).',
+          'Prisão por alimentos só pelas 3 últimas prestações antes da ação e as que vencerem no curso (Súmula 309 do STJ).',
+          'A indignidade depende de sentença; a deserdação, de testamento com causa expressa.']},
+  'pen-0': {
+    art:['Peculato (art. 312): apropriação, desvio, furto (§1º) e culposo (§2º).',
+         'Concussão (art. 316) exige; corrupção passiva (art. 317) solicita, recebe ou aceita promessa.',
+         'Corrupção ativa (art. 333) oferece ou promete. Prevaricação (art. 319) é por interesse ou sentimento pessoal.',
+         'Furto (art. 155), roubo (art. 157), extorsão (art. 158) e estelionato (art. 171).',
+         'Lei 7.716/89: racismo, incluindo a injúria racial do art. 2º-A (Lei 14.532/2023).',
+         'Lei 13.869/2019: abuso de autoridade exige finalidade específica (art. 1º, §1º).'],
+    fgv:['Distinção entre os crimes funcionais pelo verbo do tipo.',
+         'Súmulas sobre consumação: roubo com a inversão da posse (582 do STJ); extorsão é formal (96 do STJ).',
+         'Estelionato passou a depender de representação, com exceções (art. 171, §5º).'],
+    trap:['Peculato culposo: ressarcir antes da sentença irrecorrível extingue a punibilidade; depois, reduz a pena pela metade.',
+          'Insignificância não se aplica a crimes contra a administração pública (Súmula 599 do STJ), salvo o descaminho.',
+          'Dar a vantagem depois de o funcionário solicitar não é corrupção ativa.',
+          'Divergência na interpretação da lei não configura abuso de autoridade (art. 1º, §2º).']},
+  'pen-1': {
+    art:['Art. 59: circunstâncias judiciais. Art. 68: cálculo em três fases.',
+         'Arts. 61 a 67: agravantes, atenuantes e preponderantes.',
+         'Art. 33: regimes. Acima de 8 anos, fechado; de 4 a 8, semiaberto (não reincidente); até 4, aberto.',
+         'Art. 44: substituição por restritiva de direitos.',
+         'Arts. 69 a 72: concurso material, formal e crime continuado.',
+         'Arts. 73 e 74: erro na execução e resultado diverso. Art. 75: limite de 40 anos de cumprimento.'],
+    fgv:['Concurso formal próprio x impróprio x crime continuado.',
+         'Requisitos da substituição da pena.',
+         'Fixação do regime e as súmulas sobre gravidade em abstrato.'],
+    trap:['Atenuante não leva a pena abaixo do mínimo (Súmula 231 do STJ).',
+          'Formal próprio: exaspera de 1/6 até a metade. Impróprio, com desígnios autônomos: soma as penas.',
+          'Continuado: de 1/6 a 2/3. No específico, com violência contra vítimas diferentes, até o triplo.',
+          'Gravidade abstrata do crime não justifica regime mais grave (Súmulas 718 e 719 do STF; 440 do STJ).']}
+  };
+  function resHTML(r){
+    function list(t, a){ return '<div class="rs"><span class="label">'+t+'</span><ul>'+a.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>'; }
+    return list('Artigos-chave', r.art) + list('O que a FGV cobra', r.fgv) + list('Pegadinhas', r.trap);
+  }
+
   var SUBJ = [
     {id:'const', name:'Constitucional', q:16, src:'Mais jurisprudência do STF',
      tip:'<b>Foco:</b> Judiciário é o tema nº 1 da prova inteira. Arts. 92 a 135 da CF e as teses do STF em controle.',
@@ -744,7 +919,7 @@ nav.tabs button{min-height:44px}
         '<span class="q">'+s.q+'<small>questões</small></span>'+
         '<span class="n">'+s.name+'</span>'+
         '<span class="mini"><i style="width:'+p+'%"></i></span>'+
-        '<span class="p"><span>'+s.t.length+' temas</span><span class="num">'+p+'%</span></span></button>';
+        '<span class="p"><span>'+s.t.length+' temas'+(s.t.some(function(t,ti){return RES[s.id+'-'+ti];})?' · com resumos':'')+'</span><span class="num">'+p+'%</span></span></button>';
     }).join('');
   }
   grid.addEventListener('click', function(e){
@@ -767,7 +942,8 @@ nav.tabs button{min-height:44px}
       return '<div class="topic'+(checked[key]?' done':'')+'">'+
         '<input type="checkbox" id="'+key+'"'+(checked[key]?' checked':'')+'>'+
         '<label for="'+key+'">'+t[0]+(t[2]?'<span class="note">'+t[2]+'</span>':'')+'<span class="tag '+p+'">'+prioLabel[p]+'</span></label>'+
-        '<div class="inc">'+(t[3]?'<span class="n">~</span><span class="u">estimado</span>':'<span class="n">'+t[1]+'</span><span class="u">questões</span>')+'</div></div>';
+        '<div class="inc">'+(t[3]?'<span class="n">~</span><span class="u">estimado</span>':'<span class="n">'+t[1]+'</span><span class="u">questões</span>')+'</div>'+
+        (RES[key]?'<button type="button" class="link rsbtn" data-res="'+key+'" aria-expanded="false">Ver resumo</button><div class="resumo" id="r-'+key+'" hidden>'+resHTML(RES[key])+'</div>':'')+'</div>';
     }).join('');
     document.getElementById('dLegend').textContent = anyEst
       ? 'Números = questões que caíram nas edições I a V. "~" = tema recorrente sem contagem publicada.'
@@ -775,6 +951,11 @@ nav.tabs button{min-height:44px}
     show('detalhe');
     window.scrollTo(0,0);
   }
+  document.getElementById('dTopics').addEventListener('click', function(e){
+    var b = e.target.closest('[data-res]'); if(!b) return;
+    var box = document.getElementById('r-'+b.dataset.res), open = box.hidden;
+    box.hidden = !open; b.setAttribute('aria-expanded', open); b.textContent = open ? 'Fechar resumo' : 'Ver resumo';
+  });
   document.getElementById('dTopics').addEventListener('change', function(e){
     if(e.target.type !== 'checkbox') return;
     if(e.target.checked) checked[e.target.id] = true; else delete checked[e.target.id];
