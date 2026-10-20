@@ -278,7 +278,7 @@ nav.tabs button{min-height:44px}
   <main class="screen" id="v-hoje">
     <header class="hello">
       <span class="date" id="today">hoje</span>
-      <h1>Bom dia, <span class="pink">Vitória</span></h1>
+      <h1><span id="greet">Bom dia</span>, <span class="pink">Vitória</span></h1>
       <p>Esse sonho é seu, e eu estou do seu lado em cada página até a aprovação.</p>
     </header>
 
@@ -644,8 +644,8 @@ nav.tabs button{min-height:44px}
   'const-2': {
     art:['Art. 150, I a III: legalidade, isonomia, irretroatividade, anterioridade anual e de 90 dias.',
          'Art. 150, IV e V: não confisco e liberdade de tráfego.',
-         'Art. 150, VI: imunidades recíproca, de templos, de partidos, sindicatos de trabalhadores e entidades sem fins lucrativos, de livros e papel, de fonogramas brasileiros.',
-         'Art. 150, §2º: a imunidade recíproca se estende a autarquias e fundações públicas.',
+         'Art. 150, VI: imunidades recíproca; de entidades religiosas e templos, inclusive suas organizações assistenciais e beneficentes (redação da EC 132/2023); de partidos, sindicatos de trabalhadores e entidades de educação e assistência sem fins lucrativos; de livros, jornais, periódicos e papel; de fonogramas brasileiros.',
+         'Art. 150, §2º: a imunidade recíproca se estende a autarquias, fundações públicas e, desde a EC 132/2023, à empresa pública prestadora do serviço postal.',
          'Arts. 157 a 162: repartição de receitas.',
          'EC 132/2023 (reforma tributária): IBS, CBS e Imposto Seletivo. Confira a redação vigente dos artigos novos.'],
     fgv:['Exceções às anterioridades, tema clássico em tabela.',
@@ -661,7 +661,7 @@ nav.tabs button{min-height:44px}
          'Art. 5º, LXI a LXVI: prisão só em flagrante ou por ordem escrita e fundamentada; comunicação imediata; direito ao silêncio; liberdade provisória.',
          'Art. 5º, XI: casa é asilo inviolável. De dia, com ordem judicial; a qualquer hora, em flagrante, desastre ou socorro.',
          'Art. 5º, LXVII e SV 25: prisão civil só do devedor de alimentos.'],
-    fgv:['Execução da pena: só após o trânsito (ADCs 43, 44 e 54), com a exceção da condenação pelo júri, que o STF admitiu executar de imediato.',
+    fgv:['Execução da pena: só após o trânsito (ADCs 43, 44 e 54). Exceção: condenação pelo júri se executa de imediato, qualquer que seja a pena (STF, Tema 1068, set/2024).',
          'Provas derivadas da ilícita e as exceções da fonte independente e da descoberta inevitável (CPP, art. 157).',
          'SV 14: acesso do defensor aos elementos já documentados.'],
     trap:['Depositário infiel não pode ser preso (SV 25).',
@@ -684,7 +684,7 @@ nav.tabs button{min-height:44px}
   'dpc-1': {
     art:['Art. 319: requisitos da inicial. Art. 321: emenda em 15 dias.',
          'Art. 330: indeferimento. Art. 331: na apelação, o juiz pode se retratar em 5 dias.',
-         'Art. 332: improcedência liminar, sem citação (contrariar súmula do STF ou STJ, repetitivo, IRDR ou IAC; prescrição ou decadência).',
+         'Art. 332: improcedência liminar, sem citação, nas causas que dispensam instrução (contrariar súmula do STF ou STJ, repetitivo, IRDR ou IAC, súmula de TJ sobre direito local; prescrição ou decadência).',
          'Art. 334: audiência de conciliação. Só não acontece se as duas partes recusarem.',
          'Arts. 335 a 343: contestação em 15 dias, preliminares (art. 337) e reconvenção.',
          'Arts. 355 a 357: julgamento antecipado total ou parcial e saneamento.'],
@@ -693,7 +693,7 @@ nav.tabs button{min-height:44px}
          'Efeitos da revelia e suas exceções (arts. 344 e 345).'],
     trap:['Faltar sem justificativa à audiência do art. 334 é ato atentatório, com multa de até 2%.',
           'Incompetência absoluta e relativa se alegam em preliminar de contestação. Não existe mais exceção de incompetência.',
-          'Julgamento antecipado parcial (art. 356) se impugna por agravo, não por apelação.']},
+          'Julgamento antecipado parcial (art. 356, §5º) se impugna por agravo de instrumento, não por apelação.']},
   'civ-0': {
     art:['Art. 104: requisitos de validade. Art. 166: nulidades. Art. 167: simulação é nula, mas o negócio dissimulado subsiste se válido.',
          'Arts. 168 e 169: o nulo pode ser declarado de ofício e não convalesce.',
@@ -718,12 +718,12 @@ nav.tabs button{min-height:44px}
     fgv:['Requisitos da resolução por onerosidade excessiva: fato extraordinário e imprevisível e extrema vantagem para a outra parte.',
          'Prazos dos vícios redibitórios.',
          'Figuras da boa-fé: supressio, surrectio, venire contra factum proprium e tu quoque.'],
-    trap:['Vício redibitório: 30 dias para móvel e 1 ano para imóvel, contados da entrega. Se o comprador já tinha a posse, os prazos caem pela metade.',
+    trap:['Vício redibitório: 30 dias para móvel e 1 ano para imóvel, contados da entrega efetiva. Se o comprador já tinha a posse, o prazo conta da alienação e cai pela metade (art. 445).',
           'No CDC basta o fato superveniente; no CC exige-se imprevisibilidade.',
-          'Cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação.']},
+          'Cláusula resolutiva expressa opera de pleno direito; a tácita depende de interpelação judicial (art. 474).']},
   'civ-2': {
     art:['Compra e venda: art. 496, venda de ascendente a descendente é anulável sem consentimento dos outros descendentes e do cônjuge.',
-         'Doação: art. 544, a de ascendente a descendente ou entre cônjuges adianta a legítima. Art. 548, a universal é nula. Art. 549, a inoficiosa é nula no excesso.',
+         'Doação: art. 544, a de ascendente a descendente ou entre cônjuges adianta a legítima. Art. 548, é nula a doação de todos os bens sem reserva para a subsistência do doador. Art. 549, a inoficiosa é nula no excesso.',
          'Arts. 555 a 564: revogação por ingratidão, com prazo de 1 ano (art. 559) e doações que não admitem revogação.',
          'Fiança: arts. 818 a 839. Benefício de ordem (art. 827). Sem prazo, o fiador se exonera notificando e fica responsável por 60 dias.',
          'Mandato: arts. 653 a 692. O mandato em causa própria é irrevogável (art. 685).',
@@ -738,30 +738,31 @@ nav.tabs button{min-height:44px}
   'civ-3': {
     art:['Arts. 1.521 e 1.523: impedimentos (casamento nulo) x causas suspensivas (separação obrigatória).',
          'Art. 1.640: comunhão parcial é o regime supletivo. Art. 1.659: bens que ficam fora.',
-         'Arts. 1.647 e 1.649: atos que exigem outorga do cônjuge; sem ela, anulável em 2 anos.',
+         'Arts. 1.647 e 1.649: atos que exigem outorga do cônjuge; sem ela, o ato é anulável até 2 anos depois de terminada a sociedade conjugal.',
          'Art. 1.723: união estável. Art. 1.725: comunhão parcial, salvo contrato escrito.',
          'Art. 1.829: ordem da vocação hereditária e a concorrência do cônjuge com os descendentes.',
          'Arts. 1.845 e 1.846: herdeiros necessários e legítima de metade. Indignidade (art. 1.814) x deserdação (art. 1.962).'],
     fgv:['Concorrência do cônjuge: não concorre na comunhão universal, na separação obrigatória e na comunhão parcial sem bens particulares.',
-         'O companheiro tem os mesmos direitos sucessórios do cônjuge (STF, Tema 809).',
+         'O art. 1.790 é inconstitucional: a sucessão do companheiro segue o regime do art. 1.829, igual à do cônjuge (STF, Tema 809).',
          'Separação obrigatória dos maiores de 70 anos pode ser afastada por escritura pública (STF, Tema 1236).'],
-    trap:['Guarda compartilhada é a regra, mesmo sem acordo dos pais (art. 1.584, §2º).',
+    trap:['Guarda compartilhada é a regra, mesmo sem acordo dos pais, salvo se um deles não quiser a guarda ou houver indício de risco de violência doméstica ou familiar (art. 1.584, §2º, redação da Lei 14.713/2023).',
           'Prisão por alimentos só pelas 3 últimas prestações antes da ação e as que vencerem no curso (Súmula 309 do STJ).',
           'A indignidade depende de sentença; a deserdação, de testamento com causa expressa.']},
   'pen-0': {
     art:['Peculato (art. 312): apropriação, desvio, furto (§1º) e culposo (§2º).',
          'Concussão (art. 316) exige; corrupção passiva (art. 317) solicita, recebe ou aceita promessa.',
          'Corrupção ativa (art. 333) oferece ou promete. Prevaricação (art. 319) é por interesse ou sentimento pessoal.',
-         'Furto (art. 155), roubo (art. 157), extorsão (art. 158) e estelionato (art. 171).',
+         'Furto (art. 155), roubo (art. 157), extorsão (art. 158), estelionato (art. 171) e receptação (art. 180), com as mudanças da Lei 15.397/2026.',
          'Lei 7.716/89: racismo, incluindo a injúria racial do art. 2º-A (Lei 14.532/2023).',
          'Lei 13.869/2019: abuso de autoridade exige finalidade específica (art. 1º, §1º).'],
     fgv:['Distinção entre os crimes funcionais pelo verbo do tipo.',
          'Súmulas sobre consumação: roubo com a inversão da posse (582 do STJ); extorsão é formal (96 do STJ).',
-         'Estelionato passou a depender de representação, com exceções (art. 171, §5º).'],
+         'Lei 15.397/2026 (publicada em 04/05/2026): furto simples passa a 1 a 6 anos; roubo simples a 6 a 10 anos; latrocínio a 24 a 30 anos; novas qualificadoras e majorantes para celular, computador e arma de fogo; receptação simples a 2 a 6 anos.'],
     trap:['Peculato culposo: ressarcir antes da sentença irrecorrível extingue a punibilidade; depois, reduz a pena pela metade.',
-          'Insignificância não se aplica a crimes contra a administração pública (Súmula 599 do STJ), salvo o descaminho.',
+          'Insignificância não se aplica a crimes contra a administração pública (Súmula 599 do STJ). O descaminho é exceção aceita pela jurisprudência, não pelo texto da súmula.',
           'Dar a vantagem depois de o funcionário solicitar não é corrupção ativa.',
-          'Divergência na interpretação da lei não configura abuso de autoridade (art. 1º, §2º).']},
+          'Divergência na interpretação da lei não configura abuso de autoridade (art. 1º, §2º).',
+          'Estelionato voltou a ser de ação penal pública incondicionada: a Lei 15.397/2026 revogou o §5º do art. 171, que exigia representação.']},
   'pen-1': {
     art:['Art. 59: circunstâncias judiciais. Art. 68: cálculo em três fases.',
          'Arts. 61 a 67: agravantes, atenuantes e preponderantes.',
@@ -820,7 +821,7 @@ nav.tabs button{min-height:44px}
         ['ECA, Estatuto da Juventude e do Idoso',4,'']]},
     {id:'pen', name:'Penal', q:12, src:'Lei + doutrina na Parte Geral',
      tip:'<b>Foco:</b> crimes em espécie dão mais de 4 questões por prova. Imputabilidade nunca caiu.',
-     t:[['Crimes em espécie + Leis 7.716, 12.288 e 13.869',22,'adm. pública, patrimônio, pessoa'],
+     t:[['Crimes em espécie + Leis 7.716, 12.288 e 13.869',22,'adm. pública, patrimônio (Lei 15.397/2026), pessoa'],
         ['Das penas: dosimetria e concurso de crimes',12,'formal próprio x impróprio'],
         ['Norma penal: lei no tempo e no espaço',8,'Súmula 711'],
         ['Iter criminis',7,'desistência x tentativa'],
@@ -878,7 +879,16 @@ nav.tabs button{min-height:44px}
   document.getElementById('days').textContent = Math.max(0, Math.ceil((EXAM - now) / 86400000));
   var pIdx = ((dayIdx % PHRASES.length) + PHRASES.length) % PHRASES.length;
   var phraseEl = document.getElementById('phrase');
-  function showPhrase(){ phraseEl.textContent = PHRASES[pIdx]; }
+  function greeting(){ var h = new Date().getHours(); return h < 12 ? 'Bom dia' : (h < 18 ? 'Boa tarde' : 'Boa noite'); }
+  function fixGreet(t){ return t.replace(/^Bom dia/, greeting()); }
+  function showPhrase(){ phraseEl.textContent = fixGreet(PHRASES[pIdx]); }
+  function applyGreeting(){
+    var g = greeting();
+    document.getElementById('greet').textContent = g;
+    document.title = g + ', Vitória';
+  }
+  applyGreeting();
+  setInterval(function(){ var before = document.getElementById('greet').textContent; applyGreeting(); if(before !== greeting()) showPhrase(); }, 60000);
   showPhrase();
   document.getElementById('nextPhrase').addEventListener('click', function(){ pIdx = (pIdx + 1) % PHRASES.length; showPhrase(); });
   var fIdx = ((dayIdx % 20) + 20) % 20;
